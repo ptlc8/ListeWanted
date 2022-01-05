@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color">#3c1407</color>
+    <color name="main">#724d41</color>
+    <color name="dark_color">#3c1407</color>
+    <color name="analog1">#726641</color>
+    <color name="analog2">#72414d</color>
+    <color name="triad1">#41724d</color>
+    <color name="triad2">#4d4172</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
