@@ -12,11 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import fr.liste_wanted.Defis;
 import fr.liste_wanted.R;
@@ -40,24 +36,20 @@ public class DefisFragment extends Fragment {
         defisListView.setAdapter(defisListAdapter);
 
         SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
-        swipe2refresh.setOnRefreshListener(() -> {
-            refresh(()->swipe2refresh.setRefreshing(false));
-        });
+        swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
 
         return root;
     }
 
     public void refresh(Runnable onRefresh) {
         defis.refresh(defis -> {
-            getActivity().runOnUiThread(()-> {
-                defisListAdapter.setDefis(defis);
-            });
+            getActivity().runOnUiThread(() -> defisListAdapter.setDefis(defis));
             onRefresh.run();
         }, ioe -> {
-            Toast.makeText(getContext(), "Erreur de connexion", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show();
             onRefresh.run();
         }, se -> {
-            Toast.makeText(getContext(), "Erreur côté serveur, veuillez réésayer plus tard", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.server_error, Toast.LENGTH_LONG).show();
             onRefresh.run();
         });
     }
