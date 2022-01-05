@@ -3,4 +3,6 @@
     <string name="title_allos">Allôs</string>
     <string name="title_home">Présentation</string>
     <string name="title_defis">Défis</string>
+    <string name="proposer_un_defi">Proposer un défi</string>
+    <string name="defi_title">Défi n°%1$d de %2$s</string>
 </resources>
