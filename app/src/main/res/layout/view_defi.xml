@@ -27,9 +27,9 @@
 
     <ImageView
         android:id="@+id/finished"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:contentDescription="@string/finished_defi"
         app:tint="@color/triad1"
         app:srcCompat="?android:attr/textCheckMark" />
 

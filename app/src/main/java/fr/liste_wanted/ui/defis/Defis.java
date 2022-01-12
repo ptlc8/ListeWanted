@@ -1,4 +1,4 @@
-package fr.liste_wanted;
+package fr.liste_wanted.ui.defis;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,16 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import fr.liste_wanted.HttpRequest;
 import fr.liste_wanted.data.Defi;
 
 public class Defis {
 
     private boolean canSubmit = false;
-    private List<Defi> defis = new ArrayList<>();
+    private final List<Defi> defis = new ArrayList<>();
 
-    public Defis() {
-        defis.add(new Defi(5,"He0","test"));
-    }
+    public Defis() {}
 
     public void refresh(Consumer<Defis> onResponse, Consumer<IOException> onRequestError, Consumer<String> onServerError) {
         HttpRequest.get(HttpRequest.API_URL+"/defis/get.php", response -> {
@@ -41,5 +40,9 @@ public class Defis {
 
     public List<Defi> getDefis() {
         return defis;
+    }
+
+    public boolean canSubmit() {
+        return canSubmit;
     }
 }
