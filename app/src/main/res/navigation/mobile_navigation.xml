@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_allos"
-        android:name="fr.liste_wanted.ui.allos.AllosFragment"
-        android:label="@string/title_allos"
-        tools:layout="@layout/fragment_allos" />
+        android:id="@+id/navigation_events"
+        android:name="fr.liste_wanted.ui.events.EventsFragment"
+        android:label="@string/title_events"
+        tools:layout="@layout/fragment_events" />
 
     <fragment
         android:id="@+id/navigation_defis"

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Liste Wanted</string>
-    <string name="title_allos">Allôs</string>
+    <string name="title_events">Évents</string>
     <string name="title_home">Présentation</string>
     <string name="title_defis">Défis</string>
     <string name="proposer_un_defi">Proposer un défi</string>
@@ -9,4 +9,6 @@
     <string name="server_error">Erreur côté serveur, veuillez réésayer plus tard</string>
     <string name="finished_defi">Défi réalisé</string>
     <string name="listeux_picture">Photo de listeux(se)</string>
+    <string name="coming_events">Évents à venir</string>
+    <string name="past_events">Évents passés</string>
 </resources>

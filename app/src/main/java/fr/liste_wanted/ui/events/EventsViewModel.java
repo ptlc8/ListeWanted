@@ -1,14 +1,14 @@
-package fr.liste_wanted.ui.allos;
+package fr.liste_wanted.ui.events;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class AllosViewModel extends ViewModel {
+public class EventsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public AllosViewModel() {
+    public EventsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is allos fragment");
     }

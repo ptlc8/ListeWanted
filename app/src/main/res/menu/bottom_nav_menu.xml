@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_allos"
+        android:id="@+id/navigation_events"
         android:icon="@drawable/ic_allos"
-        android:title="@string/title_allos" />
+        android:title="@string/title_events" />
 
     <item
         android:id="@+id/navigation_home"
