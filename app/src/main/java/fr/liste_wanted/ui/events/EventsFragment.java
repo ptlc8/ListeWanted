@@ -18,12 +18,9 @@ import fr.liste_wanted.databinding.FragmentEventsBinding;
 
 public class EventsFragment extends Fragment {
 
-    private EventsViewModel dashboardViewModel;
     private FragmentEventsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel = new ViewModelProvider(this).get(EventsViewModel.class);
-
         binding = FragmentEventsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
