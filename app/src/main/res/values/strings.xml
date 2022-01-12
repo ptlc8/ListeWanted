@@ -7,4 +7,6 @@
     <string name="defi_title">Défi n°%1$d de %2$s</string>
     <string name="connection_error">Erreur de connexion</string>
     <string name="server_error">Erreur côté serveur, veuillez réésayer plus tard</string>
+    <string name="finished_defi">Défi réalisé</string>
+    <string name="listeux_picture">Photo de listeux(se)</string>
 </resources>

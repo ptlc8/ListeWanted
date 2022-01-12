@@ -1,35 +1,45 @@
 package fr.liste_wanted.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    List<Pole> poles;
+    ListView polesView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), s -> {
-            textView.setText(s);
-        });
+        polesView = root.findViewById(R.id.list_poles);
+
+        poles = getPolesFromJSON(getContext());
+        polesView.setAdapter(new PolesAdapter(getContext(), poles));
+
         return root;
     }
 
@@ -38,4 +48,27 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    protected static List<Pole> getPolesFromJSON(Context context) {
+        List<Pole> poles = new ArrayList<>();
+        String json = "";
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.poles)));
+            String line;
+            while ((line = reader.readLine()) != null)
+                json += line + "\n";
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONArray jsonPoles = new JSONArray(json);
+            for (int i = 0; i < jsonPoles.length(); i++)
+                poles.add(new Pole(jsonPoles.getJSONObject(i)));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return poles;
+    }
+
 }
