@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListeWanted">
         <activity
+            android:name=".ui.events.EventActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ListeWanted.NoActionBar" />
+        <activity
             android:name=".ui.defis.SendDefiActivity"
             android:exported="false" />
         <activity

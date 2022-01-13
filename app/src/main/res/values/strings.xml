@@ -15,4 +15,12 @@
     <string name="what_defi">Quel est ton défi ?</string>
     <string name="send_defi">Envoyez le défi</string>
     <string name="defi_sent">Défi envoyé !</string>
+    <string name="date_interval">Du %1$s %2$s %3$s au %4$s %5$s %6$s</string>
+    <string name="date">Le %1$s %2$s %3$s</string>
+    <string name="time_interval">De %1$sh%2$s à %3$sh%4$s</string>
+    <string name="time">À %1$sh%2$s</string>
+    <string name="description">Description</string>
+    <string name="place">Lieu</string>
+    <string name="share">"Partager cet évent !!!"</string>
+    <string name="share_event_text">"La liste Wanted organise "%1$s", on y va ensemble ?"</string>
 </resources>

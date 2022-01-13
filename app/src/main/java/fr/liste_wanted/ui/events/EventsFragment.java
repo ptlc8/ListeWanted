@@ -1,5 +1,6 @@
 package fr.liste_wanted.ui.events;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,12 +39,8 @@ public class EventsFragment extends Fragment {
 
         binding.listEvents.setAdapter(new EventsAdapter(getContext(), comingEvents));
         binding.listPastEvents.setAdapter(new EventsAdapter(getContext(), pastEvents));
-        binding.listEvents.setOnClickListener(event -> {
-            // TODO : event detail activity
-        });
-        binding.listPastEvents.setOnClickListener(event -> {
-            // TODO : event detail activity
-        });
+        binding.listEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(comingEvents.get(i)));
+        binding.listPastEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(pastEvents.get(i)));
 
         return root;
     }
@@ -54,12 +51,22 @@ public class EventsFragment extends Fragment {
         binding = null;
     }
 
+    private void showEvent(Event event) {
+        Intent intent = new Intent(getContext(),EventActivity.class);
+        intent.putExtra("name", event.getName());
+        intent.putExtra("description", event.getDescription());
+        intent.putExtra("place", event.getPlace());
+        intent.putExtra("startTime", event.getStartTime());
+        intent.putExtra("endTime", event.getEndTime());
+        startActivity(intent);
+    }
+
     public static List<Event> getEvents() {
         List<Event> events = new ArrayList<>();
-        events.add(new Event("Salut je suis un évent", new Date().getTime(), new Date().getTime()+10000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
-        events.add(new Event("Un event passé 30 :/", 30, 1000, "Chépa", "Yeah !"));
+        events.add(new Event("Salut je suis un évent", new Date().getTime()+360000, new Date().getTime()+80*60*1000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
+        events.add(new Event("Un event passé 30 :/", 0, 300000, "Chépa", "Yeah !"));
         events.add(new Event("Un event passé :/", 0, 10000, "Chépa", "Yeah !"));
-        events.add(new Event("Un event passé 10 :/", 10, 10000, "Chépa", "Yeah !"));
+        events.add(new Event("Un event passé 100'000 :/", 0, 1000000000, "Chépa", "Yeah !"));
         events.add(new Event("Un event passé :/", 0, 10000, "Chépa", "Yeah !"));
         events.add(new Event("Un test passé :/", 0, 10000, "Chépa", "Yeah !"));
         events.add(new Event("Un event passé :/", 0, 1000, "Chépa", "Yeah !"));
