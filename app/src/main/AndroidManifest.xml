@@ -4,19 +4,21 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ListeWanted"
-        android:networkSecurityConfig="@xml/security_config">
+        android:theme="@style/Theme.ListeWanted">
+        <activity
+            android:name=".ui.defis.SendDefiActivity"
+            android:exported="false" />
         <activity
             android:name=".StartActivity"
-            android:theme="@style/Theme.ListeWanted.Fullscreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.ListeWanted.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

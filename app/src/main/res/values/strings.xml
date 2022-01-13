@@ -11,4 +11,8 @@
     <string name="listeux_picture">Photo de listeux(se)</string>
     <string name="coming_events">Évents à venir</string>
     <string name="past_events">Évents passés</string>
+    <string name="who">Qui es-tu ?</string>
+    <string name="what_defi">Quel est ton défi ?</string>
+    <string name="send_defi">Envoyez le défi</string>
+    <string name="defi_sent">Défi envoyé !</string>
 </resources>

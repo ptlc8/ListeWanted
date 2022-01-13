@@ -1,4 +1,4 @@
-package fr.liste_wanted.ui.defis;
+package fr.liste_wanted.data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import fr.liste_wanted.HttpRequest;
-import fr.liste_wanted.data.Defi;
 
 public class Defis {
 
@@ -44,5 +43,21 @@ public class Defis {
 
     public boolean canSubmit() {
         return canSubmit;
+    }
+
+    public static void sendNew(String author, String task, Runnable onSuccess, Consumer<IOException> onRequestError, Consumer<String> onServerError) {
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("author", author);
+            jsonBody.put("task", task);
+            HttpRequest.get(HttpRequest.API_URL+"/defis/add.php?author="+author+"&task="+task, response -> { // TODO: remplacer par un POST
+                System.out.println("*"+response+"*");
+                if (response.trim().equals("ok"))
+                    onSuccess.run();
+                else onServerError.accept(response);
+            }, onRequestError);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

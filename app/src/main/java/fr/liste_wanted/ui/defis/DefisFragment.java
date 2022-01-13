@@ -1,6 +1,7 @@
 package fr.liste_wanted.ui.defis;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Defi;
+import fr.liste_wanted.data.Defis;
 import fr.liste_wanted.databinding.FragmentDefisBinding;
 
 public class DefisFragment extends Fragment {
@@ -42,7 +44,17 @@ public class DefisFragment extends Fragment {
         SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
         swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
 
+        root.findViewById(R.id.propose_defi).setOnClickListener(event -> {
+            startActivity(new Intent(getContext(), SendDefiActivity.class));
+        });
+
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh(()->{});
     }
 
     public void refresh(Runnable onRefresh) {
@@ -104,6 +116,7 @@ public class DefisFragment extends Fragment {
         public View getView(int i, View convertView, ViewGroup viewGroup) {
             View view = inflater.inflate(R.layout.view_defi, viewGroup, false);
             Defi defi = defis.getDefis().get(i);
+            if (defi == null) return null;
             ((TextView)view.findViewById(R.id.author)).setText(context.getString(R.string.defi_title, defi.getNumber(), defi.getAuthor()));
             ((TextView)view.findViewById(R.id.task)).setText(defi.getTask());
             view.findViewById(R.id.finished).setVisibility(View.VISIBLE);
