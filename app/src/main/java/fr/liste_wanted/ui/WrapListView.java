@@ -1,4 +1,4 @@
-package fr.liste_wanted.ui.home;
+package fr.liste_wanted.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

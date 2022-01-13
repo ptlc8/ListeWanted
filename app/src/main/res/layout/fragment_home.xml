@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <fr.liste_wanted.ui.home.WrapListView
+        <fr.liste_wanted.ui.WrapListView
             android:id="@+id/list_poles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp" />
-        <fr.liste_wanted.ui.home.WrapListView
+        <fr.liste_wanted.ui.WrapListView
             android:id="@+id/grid_buro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp" />
-        <fr.liste_wanted.ui.home.WrapListView
+        <fr.liste_wanted.ui.WrapListView
             android:id="@+id/grid_soiree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

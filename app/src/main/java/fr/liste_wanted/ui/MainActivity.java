@@ -1,4 +1,4 @@
-package fr.liste_wanted;
+package fr.liste_wanted.ui;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import fr.liste_wanted.R;
 import fr.liste_wanted.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

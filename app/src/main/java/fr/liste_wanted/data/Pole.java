@@ -1,10 +1,12 @@
-package fr.liste_wanted.ui.home;
+package fr.liste_wanted.data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import fr.liste_wanted.data.Member;
 
 public class Pole extends ArrayList<Member> {
 

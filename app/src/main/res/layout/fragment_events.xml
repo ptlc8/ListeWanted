@@ -23,7 +23,7 @@
             android:textAlignment="center"
             android:textSize="24sp" />
 
-        <fr.liste_wanted.ui.home.WrapListView
+        <fr.liste_wanted.ui.WrapListView
             android:id="@+id/list_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -39,7 +39,7 @@
             android:textAlignment="center"
             android:textSize="24sp" />
 
-        <fr.liste_wanted.ui.home.WrapListView
+        <fr.liste_wanted.ui.WrapListView
             android:id="@+id/list_past_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

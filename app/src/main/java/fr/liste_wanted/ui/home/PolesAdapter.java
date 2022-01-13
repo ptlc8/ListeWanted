@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Member;
+import fr.liste_wanted.data.Pole;
 
 public class PolesAdapter extends BaseAdapter {
 

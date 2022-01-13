@@ -1,4 +1,4 @@
-package fr.liste_wanted.ui.home;
+package fr.liste_wanted.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;

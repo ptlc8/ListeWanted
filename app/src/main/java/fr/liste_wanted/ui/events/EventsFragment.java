@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fr.liste_wanted.data.Event;
 import fr.liste_wanted.databinding.FragmentEventsBinding;
 
 public class EventsFragment extends Fragment {
@@ -37,6 +38,12 @@ public class EventsFragment extends Fragment {
 
         binding.listEvents.setAdapter(new EventsAdapter(getContext(), comingEvents));
         binding.listPastEvents.setAdapter(new EventsAdapter(getContext(), pastEvents));
+        binding.listEvents.setOnClickListener(event -> {
+            // TODO : event detail activity
+        });
+        binding.listPastEvents.setOnClickListener(event -> {
+            // TODO : event detail activity
+        });
 
         return root;
     }

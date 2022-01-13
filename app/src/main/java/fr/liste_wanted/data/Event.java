@@ -1,4 +1,4 @@
-package fr.liste_wanted.ui.events;
+package fr.liste_wanted.data;
 
 public class Event {
 

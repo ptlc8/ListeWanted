@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Locale;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Event;
 
 public class EventsAdapter extends BaseAdapter {
 

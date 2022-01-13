@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_color"
-    tools:context=".StartActivity">
+    tools:context=".ui.StartActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,5 +19,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
+        app:srcCompat="@drawable/ic_logo_animated" />
 </androidx.constraintlayout.widget.ConstraintLayout>
