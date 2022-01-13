@@ -50,7 +50,7 @@ public class DefisListAdapter extends BaseAdapter {
         if (defi == null) return null;
         ((TextView) view.findViewById(R.id.author)).setText(context.getString(R.string.defi_title, defi.getNumber(), defi.getAuthor()));
         ((TextView) view.findViewById(R.id.task)).setText(defi.getTask());
-        view.findViewById(R.id.finished).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.finished).setVisibility(defi.isFinished() ? View.VISIBLE : View.INVISIBLE);
         // TODO : Ajouter les preuves de défi
         return view;
     }

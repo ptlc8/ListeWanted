@@ -74,6 +74,4 @@ public class DefisFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-
 }
