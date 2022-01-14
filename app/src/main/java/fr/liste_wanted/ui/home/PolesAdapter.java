@@ -19,15 +19,24 @@ public class PolesAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
     private List<Pole> poles;
+    private int membersPerRow;
 
-    public PolesAdapter(Context context, List<Pole> poles) {
+    public PolesAdapter(Context context, List<Pole> poles, int membersPerRow) {
         this.poles = poles;
         inflater = LayoutInflater.from(context);
+        this.membersPerRow = membersPerRow;
     }
 
     public void setPoles(List<Pole> poles) {
         this.poles = poles;
         notifyDataSetChanged();
+    }
+
+    public int getMembersPerRow() {
+        return membersPerRow;
+    }
+    public void setMembersPerRow(int membersPerRow) {
+        this.membersPerRow = membersPerRow;
     }
 
     @Override
@@ -51,9 +60,9 @@ public class PolesAdapter extends BaseAdapter {
         View poleView = inflater.inflate(R.layout.view_pole, viewGroup, false);
         ((TextView)poleView.findViewById(R.id.text_name)).setText(pole.getName());
         LinearLayout membersGrid = poleView.findViewById(R.id.linear_pole);
-        for (int l = 0; l < pole.size()/3f; l++) {
+        for (int l = 0; l < pole.size()*1f/ membersPerRow; l++) {
             LinearLayout row = (LinearLayout) inflater.inflate(R.layout.row, membersGrid, false);
-            for (int j = l*3; j < l*3+3; j++) {
+            for (int j = l* membersPerRow; j < (l+1)* membersPerRow; j++) {
                 if (j >= pole.size()) {
                     View emptyView = inflater.inflate(R.layout.column, row, false);
                     row.addView(emptyView);

@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
         polesView = root.findViewById(R.id.list_poles);
 
         poles = getPolesFromJSON(getContext());
-        polesView.setAdapter(new PolesAdapter(getContext(), poles));
+        polesView.setAdapter(new PolesAdapter(getContext(), poles, 3));
 
         return root;
     }
