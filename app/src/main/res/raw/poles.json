@@ -3,17 +3,17 @@
     "name": "Bureau",
     "members":[
       {
+        "name": "Louis Maley",
+        "nickname": "SDF",
+        "desc": "Si vous avez un toit pour ce soir, il est preneur !",
+        "tag": "Vice-Président"
+      },
+      {
         "name": "Mathilde Marrot",
         "nickname": "Drunky Luke",
         "desc": "Arrive à être bourée plus vite que son ombre",
         "tag": "Présidente",
         "picture": "@"
-      },
-      {
-        "name": "Louis Maley",
-        "nickname": "SDF",
-        "desc": "Si vous avez un toit pour ce soir, il est preneur !",
-        "tag": "Vice-Président"
       },
       {
         "name": "Matthieu Touré",
@@ -45,10 +45,15 @@
     "name": "Pôle Soirée",
     "members":[
       {
+        "name": "Martin Valignon",
+        "nickname": "Vodkarambar",
+        "desc": "Vous avez du parquais ? Il a des carambars !",
+        "tag": "Respo Soirée"
+      },
+      {
         "name": "Dorian Fuvel",
         "nickname": "Cheer'If 316",
         "desc": "Un sombre passé...",
-        "tag": "Respo Soirée"
       },
       {
         "name": "Duncan Boukhssibi",
@@ -117,11 +122,6 @@
         "desc": "Lui même ne sait pas ce qu'il met dans ses mélanges mais l'imporant c'est que c'est bon (et bien fort)",
         "tag": "Respo Com'",
         "id": 69
-      },
-      {
-        "name": "Martin Valignon",
-        "nickname": "Vodkarambar",
-        "desc": "Vous avez du parquais ? Il a des carambars !"
       },
       {
         "name": "Antoine Moreau",
