@@ -1,5 +1,7 @@
 package fr.liste_wanted.data;
 
+import android.content.Context;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,12 +23,13 @@ public class Member {
         this.pictureResource = pictureResource;
     }
 
-    public Member(JSONObject json) throws JSONException {
+    public Member(JSONObject json, Context context) throws JSONException {
         this.name = json.getString("name");
         this.nickname = json.getString("nickname");
         this.role = json.has("tag") ? json.getString("tag") : null;
         this.description = json.getString("desc");
-        this.pictureResource = R.drawable.unset_picture;
+        pictureResource = context.getResources().getIdentifier("member_"+this.nickname.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
+        if (pictureResource==0) pictureResource = R.drawable.unset_picture;
     }
 
     public String getName() {
