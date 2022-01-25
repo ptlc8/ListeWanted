@@ -1,23 +1,35 @@
 package fr.liste_wanted.ui.events;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.view.View;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Event;
 import fr.liste_wanted.databinding.ActivityEventBinding;
+import fr.liste_wanted.notifications.NotificationPublisher;
+import fr.liste_wanted.notifications.Notifications;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -31,16 +43,18 @@ public class EventActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
+        int eventId = intent.getIntExtra("eventId", -1);
+        String name = intent.hasExtra("name")?intent.getStringExtra("name"):"Évent";
+        String description = intent.hasExtra("description") ? intent.getStringExtra("description") : "";
+        String place = intent.hasExtra("place") ? intent.getStringExtra("place") : "";
+        long startTime = intent.getLongExtra("startTime", -1L);
+        long endTime = intent.getLongExtra("endTime", startTime);
 
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
-        binding.toolbarLayout.setTitle(intent.hasExtra("name")?intent.getStringExtra("name"):"Évent");
-        if (intent.hasExtra("description"))
-            binding.textDescription.setText(intent.getStringExtra("description"));
-        if (intent.hasExtra("place"))
-            binding.textPlace.setText(intent.getStringExtra("place"));
-        long startTime = intent.getLongExtra("startTime", -1L);
-        long endTime = intent.getLongExtra("endTime", startTime);
+        binding.toolbarLayout.setTitle(name);
+        binding.textDescription.setText(description);
+        binding.textPlace.setText(place);
         if (startTime != -1) {
             System.out.println(startTime);
             System.out.println(endTime);
@@ -63,9 +77,25 @@ public class EventActivity extends AppCompatActivity {
         });
         if (startTime < new Date().getTime())
             shareButton.setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.text_place).setOnClickListener(v->{
+            Notifications.sendNotification(this, Notifications.createEventNotification(this, new Event(eventId, name, startTime, endTime, place, description)), eventId);
+        });
     }
 
     private String format(String format, long time) {
         return new SimpleDateFormat(format,Locale.getDefault()).format(time);
     }
+
+    public static Intent getShowEventIntent(Context context, Event event) {
+        Intent intent = new Intent(context, EventActivity.class);
+        intent.putExtra("eventId", event.getId());
+        intent.putExtra("name", event.getName());
+        intent.putExtra("description", event.getDescription());
+        intent.putExtra("place", event.getPlace());
+        intent.putExtra("startTime", event.getStartTime());
+        intent.putExtra("endTime", event.getEndTime());
+        return intent;
+    }
+
 }

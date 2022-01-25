@@ -24,4 +24,6 @@
     <string name="share">"Partager cet évent !!!"</string>
     <string name="share_event_text">"La liste Wanted organise "%1$s", on y va ensemble ?"</string>
     <string name="about">Liste BDE Wanted - 2022</string>
+    <string name="event_channel_name">Évent</string>
+    <string name="event_channel_description">Notifications de début d\'évent</string>
 </resources>
