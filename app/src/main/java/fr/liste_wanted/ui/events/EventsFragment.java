@@ -1,13 +1,10 @@
 package fr.liste_wanted.ui.events;
 
 import android.app.Notification;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -67,6 +64,7 @@ public class EventsFragment extends Fragment {
 
     public static List<Event> getEvents() {
         List<Event> events = new ArrayList<>();
+        events.add(new Event(8,"Un évent dans 20 secondes", new Date().getTime()+20*1000, new Date().getTime()+80*60*1000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
         events.add(new Event(5,"Salut je suis un évent", new Date().getTime()+6*60*1000, new Date().getTime()+80*60*1000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
         events.add(new Event(1,"Un event passé 30 :/", 0, 300000, "Chépa", "Yeah !"));
         events.add(new Event(6,"Un event passé :/", 0, 10000, "Chépa", "Yeah !"));

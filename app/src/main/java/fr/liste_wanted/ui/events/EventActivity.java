@@ -1,25 +1,14 @@
 package fr.liste_wanted.ui.events;
 
-import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import android.view.View;
-import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,7 +17,6 @@ import java.util.Locale;
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Event;
 import fr.liste_wanted.databinding.ActivityEventBinding;
-import fr.liste_wanted.notifications.NotificationPublisher;
 import fr.liste_wanted.notifications.Notifications;
 
 public class EventActivity extends AppCompatActivity {
