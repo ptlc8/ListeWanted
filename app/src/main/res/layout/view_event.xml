@@ -14,6 +14,7 @@
         android:layout_alignBottom="@id/data_event"
         android:scaleType="centerCrop"
         android:src="@drawable/unset_picture"
+        android:background="@color/main"
         android:alpha="0.75" />
     <LinearLayout
         android:id="@+id/data_event"
