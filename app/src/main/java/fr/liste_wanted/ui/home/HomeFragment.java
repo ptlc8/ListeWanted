@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
         try {
             JSONArray jsonPoles = new JSONArray(json);
             for (int i = 0; i < jsonPoles.length(); i++)
-                poles.add(new Pole(jsonPoles.getJSONObject(i), context));
+                poles.add(new Pole(jsonPoles.getJSONObject(i)));
         } catch (JSONException e) {
             e.printStackTrace();
         }
