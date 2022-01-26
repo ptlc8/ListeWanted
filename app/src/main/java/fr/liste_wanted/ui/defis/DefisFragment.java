@@ -55,15 +55,18 @@ public class DefisFragment extends Fragment {
 
     public void refresh(Runnable onRefresh) {
         defis.refresh(defis -> {
+            if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
                 defisListAdapter.setDefis(defis);
                 proposeButton.setEnabled(defis.canSubmit());
             });
             onRefresh.run();
         }, ioe -> {
+            if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show());
             onRefresh.run();
         }, se -> {
+            if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.server_error, Toast.LENGTH_LONG).show());
             onRefresh.run();
         });
