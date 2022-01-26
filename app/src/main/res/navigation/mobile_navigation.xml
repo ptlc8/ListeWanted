@@ -22,4 +22,11 @@
         android:name="fr.liste_wanted.ui.defis.DefisFragment"
         android:label="@string/title_defis"
         tools:layout="@layout/fragment_defis" />
+
+    <fragment
+        android:id="@+id/navigation_partnership"
+        android:name="fr.liste_wanted.ui.partnership.PartnershipFragment"
+        android:label="@string/title_partnership"
+        tools:layout="@layout/fragment_partnership" />
+
 </navigation>
