@@ -1,5 +1,7 @@
 package fr.liste_wanted.data;
 
+import android.content.Context;
+
 public class Event {
 
     private int id;
@@ -40,5 +42,9 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getDrawableResourceId(Context context) {
+        return context.getResources().getIdentifier("event_"+name.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
     }
 }
