@@ -22,8 +22,6 @@ import java.util.List;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Partnership;
-import fr.liste_wanted.data.Pole;
-import fr.liste_wanted.databinding.FragmentEventsBinding;
 import fr.liste_wanted.databinding.FragmentPartnershipBinding;
 
 public class PartnershipFragment extends Fragment {
