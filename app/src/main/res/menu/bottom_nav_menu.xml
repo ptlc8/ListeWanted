@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_events"
-        android:icon="@drawable/ic_allos"
+        android:icon="@drawable/ic_events"
         android:title="@string/title_events" />
 
     <item
