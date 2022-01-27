@@ -33,8 +33,7 @@ public class SendDefiActivity extends AppCompatActivity {
                 inputTask.setError(getResources().getString(R.string.what_defi));
                 return;
             }
-            // TODO : captcha
-            Defis.sendNew(author, task, () -> runOnUiThread(() -> {
+            Defis.sendNew(this, author, task, () -> runOnUiThread(() -> {
                     Toast.makeText(getApplicationContext(), R.string.defi_sent, Toast.LENGTH_SHORT).show();
                     finish();
             }), ioe -> runOnUiThread(() ->

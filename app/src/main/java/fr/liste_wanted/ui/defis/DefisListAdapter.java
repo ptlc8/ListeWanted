@@ -45,6 +45,7 @@ public class DefisListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
+        if (convertView!=null) return convertView;
         View view = inflater.inflate(R.layout.view_defi, viewGroup, false);
         Defi defi = defis.getDefis().get(i);
         if (defi == null) return null;
