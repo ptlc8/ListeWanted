@@ -15,7 +15,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/unset_picture"
         android:background="@color/main"
-        android:alpha="0.75" />
+        android:alpha="0.5" />
     <LinearLayout
         android:id="@+id/data_event"
         android:layout_width="match_parent"

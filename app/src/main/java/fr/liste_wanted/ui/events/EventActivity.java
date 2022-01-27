@@ -37,12 +37,16 @@ public class EventActivity extends AppCompatActivity {
         String place = intent.hasExtra("place") ? intent.getStringExtra("place") : "";
         long startTime = intent.getLongExtra("startTime", -1L);
         long endTime = intent.getLongExtra("endTime", startTime);
+        Event event = new Event(eventId, name, startTime, endTime, place, description);
 
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         binding.toolbarLayout.setTitle(name);
         binding.textDescription.setText(description);
         binding.textPlace.setText(place);
+        int backgroundResourceId = event.getDrawableResourceId(this);
+        if (event.getDrawableResourceId(this) != 0)
+            binding.toolbarLayout.setBackgroundResource(backgroundResourceId);
         if (startTime != -1) {
             System.out.println(startTime);
             System.out.println(endTime);

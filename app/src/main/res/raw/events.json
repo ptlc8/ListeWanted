@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Salut je suis un évent",
+    "start": 1644768000,
+    "end": 1644771600,
+    "place": "Quelque part",
+    "description": "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."
+  },
+  {
+    "id": 2,
+    "name": "Petit déjeuner",
+    "start": 1645772400,
+    "end": 1645783200,
+    "place": "CY Tech Hall Condorcet",
+    "description": "P'tit dèj' !!!"
+  },
+  {
+    "id": 3,
+    "name": "Allôs",
+    "start": 1645455600,
+    "end": 1645484400,
+    "place": "Cergy",
+    "description": ""
+  }
+]

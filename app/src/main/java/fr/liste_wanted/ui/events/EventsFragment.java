@@ -1,6 +1,7 @@
 package fr.liste_wanted.ui.events;
 
 import android.app.Notification;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fr.liste_wanted.R;
 import fr.liste_wanted.data.Event;
 import fr.liste_wanted.databinding.FragmentEventsBinding;
 import fr.liste_wanted.notifications.Notifications;
@@ -25,7 +33,7 @@ public class EventsFragment extends Fragment {
         binding = FragmentEventsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        List<Event> events = getEvents();
+        List<Event> events = getEventsFromResources(requireContext());
         List<Event> comingEvents = new ArrayList<>();
         List<Event> pastEvents = new ArrayList<>();
         long now = new Date().getTime();
@@ -62,16 +70,25 @@ public class EventsFragment extends Fragment {
         startActivity(EventActivity.getShowEventIntent(getContext(), event));
     }
 
-    public static List<Event> getEvents() {
+    public static List<Event> getEventsFromResources(Context context) {
         List<Event> events = new ArrayList<>();
-        events.add(new Event(8,"Un évent dans 20 secondes", new Date().getTime()+20*1000, new Date().getTime()+80*60*1000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
-        events.add(new Event(5,"Salut je suis un évent", new Date().getTime()+6*60*1000, new Date().getTime()+80*60*1000, "Forest Crock", "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."));
-        events.add(new Event(1,"Un event passé 30 :/", 0, 300000, "Chépa", "Yeah !"));
-        events.add(new Event(6,"Un event passé :/", 0, 10000, "Chépa", "Yeah !"));
-        events.add(new Event(0,"Un event passé 100'000 :/", 0, 1000000000, "Chépa", "Yeah !"));
-        events.add(new Event(4,"Un event passé :/", 0, 10000, "Chépa", "Yeah !"));
-        events.add(new Event(3,"Un test passé :/", 0, 10000, "Chépa", "Yeah !"));
-        events.add(new Event(2,"Un event passé :/", 0, 1000, "Chépa", "Yeah !"));
+        String json = "";
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.events)));
+            String line;
+            while ((line = reader.readLine()) != null)
+                json += line + "\n";
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONArray jsonEvents = new JSONArray(json);
+            for (int i = 0; i < jsonEvents.length(); i++)
+                events.add(new Event(jsonEvents.getJSONObject(i)));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return events;
     }
 }

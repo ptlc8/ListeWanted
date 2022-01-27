@@ -2,6 +2,9 @@ package fr.liste_wanted.data;
 
 import android.content.Context;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Event {
 
     private int id;
@@ -18,6 +21,15 @@ public class Event {
         this.endTime = endTime;
         this.place = place;
         this.description = description;
+    }
+
+    public Event(JSONObject json) throws JSONException {
+        this.id = json.getInt("id");
+        this.name = json.getString("name");
+        this.startTime = json.getLong("start")*1000L;
+        this.endTime = json.getLong("end")*1000L;
+        this.place = json.getString("place");
+        this.description = json.getString("description");
     }
 
     public int getId() {
