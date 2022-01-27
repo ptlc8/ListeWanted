@@ -51,8 +51,7 @@ public class Defis {
             jsonBody.put("author", author);
             jsonBody.put("task", task);
             HttpRequest.get(HttpRequest.API_URL+"/defis/add.php?author="+author+"&task="+task, response -> { // TODO: remplacer par un POST
-                System.out.println("*"+response+"*");
-                if (response.trim().equals("ok"))
+                if (response.trim().equals("success"))
                     onSuccess.run();
                 else onServerError.accept(response);
             }, onRequestError);

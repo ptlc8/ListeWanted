@@ -7,9 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.function.Consumer;
 
-public abstract class HttpRequest {
+public class HttpRequest {
 
-    public static String API_URL = "http://cd.codermdy.com/api-test";
+    public static final String API_URL = "http://liste-wanted.fr/api-abeille-ruche-miel-o-crack";
 
     public static void get(String urlString, Consumer<String> onResponse, Consumer<IOException> onError) {
         new Thread(() -> {

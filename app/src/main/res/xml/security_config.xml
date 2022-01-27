@@ -8,5 +8,6 @@
     </base-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">cd.codermdy.com</domain>
+        <domain includeSubdomains="true">liste-wanted.fr</domain>
     </domain-config>
 </network-security-config>

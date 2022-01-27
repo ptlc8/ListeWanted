@@ -27,4 +27,5 @@
     <string name="event_channel_name">Évent</string>
     <string name="event_channel_description">Notifications de début d\'évent</string>
     <string name="title_partnership">Partenariats</string>
+    <string name="finished_defis">Défis réalisés : %1$d</string>
 </resources>

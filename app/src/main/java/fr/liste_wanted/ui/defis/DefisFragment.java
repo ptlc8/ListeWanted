@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Defi;
 import fr.liste_wanted.data.Defis;
 import fr.liste_wanted.databinding.FragmentDefisBinding;
 
@@ -21,6 +23,7 @@ public class DefisFragment extends Fragment {
 
     private Defis defis;
     private FragmentDefisBinding binding;
+    private TextView defisText;
     private DefisListAdapter defisListAdapter;
     private Button proposeButton;
 
@@ -30,6 +33,7 @@ public class DefisFragment extends Fragment {
         binding = FragmentDefisBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        defisText = root.findViewById(R.id.text_defis);
         final ListView defisListView = root.findViewById(R.id.list_defis);
         defisListAdapter = new DefisListAdapter(getContext());
         defisListView.setAdapter(defisListAdapter);
@@ -59,6 +63,11 @@ public class DefisFragment extends Fragment {
             getActivity().runOnUiThread(() -> {
                 defisListAdapter.setDefis(defis);
                 proposeButton.setEnabled(defis.canSubmit());
+                int finishedDefisCount = 0;
+                for (Defi defi : defis.getDefis())
+                    if (defi.isFinished())
+                        finishedDefisCount++;
+                defisText.setText(getString(R.string.finished_defis, finishedDefisCount));
             });
             onRefresh.run();
         }, ioe -> {
