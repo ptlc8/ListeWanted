@@ -1,6 +1,17 @@
 [
   {
     "name": "Poképrof",
-    "description": "coucou"
+    "description": "coucou",
+    "color": "#2100D3"
+  },
+  {
+    "name": "Bureau des goodies",
+    "description": "",
+    "color": "#ffffff"
+  },
+  {
+    "name": "Poppy's",
+    "description": "",
+    "color": "#ffffff"
   }
 ]

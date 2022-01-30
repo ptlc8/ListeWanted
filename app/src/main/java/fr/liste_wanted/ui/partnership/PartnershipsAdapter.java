@@ -1,6 +1,7 @@
 package fr.liste_wanted.ui.partnership;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,8 @@ public class PartnershipsAdapter extends BaseAdapter {
         View partnershipView = inflater.inflate(R.layout.view_partnership, viewGroup, false);
         ((TextView)partnershipView.findViewById(R.id.name)).setText(partnership.getName());
         ((ImageView)partnershipView.findViewById(R.id.image_partnership)).setImageResource(partnership.getDrawableResourceId(context));
+        if (partnership.getColor() != null)
+            ((ImageView)partnershipView.findViewById(R.id.image_partnership)).setBackgroundColor(Color.parseColor(partnership.getColor()));
         return partnershipView;
     }
 }
