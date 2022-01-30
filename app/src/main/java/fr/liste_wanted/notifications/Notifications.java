@@ -51,7 +51,7 @@ public class Notifications {
     public static Notification createEventNotification(Context context, Event event) {
         Notifications.createNotificationChannel(context, Notifications.eventNotificationChannelId, context.getString(R.string.event_channel_name), context.getString(R.string.event_channel_description));
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, Notifications.eventNotificationChannelId)
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.ic_wanted_logo)
                 .setColor(context.getColor(R.color.main))
                 .setContentTitle(event.getName())
                 .setContentText(event.getDescription())
