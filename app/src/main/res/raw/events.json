@@ -4,8 +4,8 @@
     "name": "Révèls",
     "start": 1645124400,
     "end": 1645146000,
-    "place": "Quelque part",
-    "description": "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."
+    "place": "Pacific Rock Cergy",
+    "description": "Découvrez les 3 listes de 2022 !"
   },
   {
     "id": 2,
@@ -24,11 +24,19 @@
     "description": ""
   },
   {
-    "id": 88,
-    "name": "Salut je suis un évent",
-    "start": 1644768000,
-    "end": 1644771600,
-    "place": "Quelque part",
+    "id": 9,
+    "name": "Journée de campagne",
+    "start": 1646636400,
+    "end": 1646686800,
+    "place": "Sites de CY Tech Cergy",
+    "description": ""
+  },
+  {
+    "id": 10,
+    "name": "Soirée de campagne",
+    "start": 1646686800,
+    "end": 1646701200,
+    "place": "",
     "description": "Woof ! Ne t'inquiète pas, j'arrive bientôt ! Le pôle entreprise cherche un lieu, le pôle voyage nettoie, le pôle soirée prépare les cocktails, le pôle évent anime, le bureau encaisse, et le pôle com' t'en informe."
   }
 ]
