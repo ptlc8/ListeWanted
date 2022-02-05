@@ -22,17 +22,22 @@ import java.util.List;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Partnership;
-import fr.liste_wanted.databinding.FragmentPartnershipBinding;
+import fr.liste_wanted.databinding.FragmentPartnershipsBinding;
 
-public class PartnershipFragment extends Fragment {
+public class PartnershipsFragment extends Fragment {
 
-    FragmentPartnershipBinding binding;
+    FragmentPartnershipsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentPartnershipBinding.inflate(inflater, container, false);
+        binding = FragmentPartnershipsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ((ListView)root.findViewById(R.id.list_partnerships)).setAdapter(new PartnershipsAdapter(getContext(), getPartnershipsFromJSON(requireContext())));
+        List<Partnership> partnerships = getPartnershipsFromJSON(requireContext());
+        ListView partnershipsListView = root.findViewById(R.id.list_partnerships);
+        partnershipsListView.setAdapter(new PartnershipsAdapter(getContext(), partnerships));
+        partnershipsListView.setOnItemClickListener((adapterView, view, i, l) ->
+                startActivity(PartnershipActivity.getShowEventIntent(requireContext(), partnerships.get(i)))
+        );
 
         return root;
     }

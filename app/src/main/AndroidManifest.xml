@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListeWanted">
         <activity
+            android:name=".ui.partnership.PartnershipActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.partnership.PartnershipActivity" />
+        <activity
             android:name=".ui.events.EventActivity"
             android:exported="false"
             android:theme="@style/Theme.ListeWanted.NoActionBar"
