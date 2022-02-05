@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 
 public class HttpRequest {
 
-    public static final String API_URL = "http://liste-wanted.fr/api-abeille-ruche-miel-o-crack";
+    public static final String API_URL = "https://liste-wanted.fr/api-abeille-ruche-miel-o-crack";
 
     public static void get(String urlString, Consumer<String> onResponse, Consumer<IOException> onError) {
         new Thread(() -> {
