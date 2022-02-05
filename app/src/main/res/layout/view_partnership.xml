@@ -12,7 +12,6 @@
         android:layout_alignTop="@id/data_partnership"
         android:layout_alignBottom="@id/data_partnership"
         android:scaleType="centerInside"
-        android:src="@drawable/unset_picture"
         android:background="@color/main"
         android:alpha="0.75" />
     <LinearLayout
