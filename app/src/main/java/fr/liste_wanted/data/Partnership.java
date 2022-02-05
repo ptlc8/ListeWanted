@@ -10,17 +10,24 @@ public class Partnership {
     private String name;
     private String description;
     private String color;
+    private String link;
 
     public Partnership(String name, String description, String color) {
+        this(name, description, color, null);
+    }
+    public Partnership(String name, String description, String color, String link) {
         this.name = name;
         this.description = description;
         this.color = color;
+        this.link = link;
     }
 
     public Partnership(JSONObject json) throws JSONException  {
         this.name = json.getString("name");
         this.description = json.getString("description");
         this.color = json.getString("color");
+        if (json.has("link"))
+            this.link = json.getString("link");
     }
 
     public String getName() {
@@ -33,6 +40,10 @@ public class Partnership {
 
     public String getColor() {
         return color;
+    }
+
+    public String getLink() {
+        return link;
     }
 
     public int getDrawableResourceId(Context context) {

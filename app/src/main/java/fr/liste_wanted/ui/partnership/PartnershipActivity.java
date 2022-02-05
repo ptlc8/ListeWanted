@@ -4,11 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.net.URI;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Partnership;
@@ -23,7 +27,8 @@ public class PartnershipActivity extends Activity {
         String name = intent.getStringExtra("name");
         String description = intent.getStringExtra("description");
         String color = intent.getStringExtra("color");
-        Partnership partnership = new Partnership(name, description, color);
+        String link = intent.getStringExtra("link");
+        Partnership partnership = new Partnership(name, description, color, link);
 
         CollapsingToolbarLayout toolbarLayout = findViewById(R.id.toolbar_layout);
         toolbarLayout.setTitle(partnership.getName());
@@ -32,6 +37,16 @@ public class PartnershipActivity extends Activity {
         int backgroundResourceId = partnership.getDrawableResourceId(this);
         if (backgroundResourceId != 0)
             toolbarLayout.setBackgroundResource(backgroundResourceId);
+
+        FloatingActionButton openButton = findViewById(R.id.button_open);
+        System.out.println(partnership.getLink());
+        if (partnership.getLink()!=null) {
+            openButton.setOnClickListener((view) ->
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(partnership.getLink())))
+            );
+        } else {
+            openButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     public static Intent getShowEventIntent(Context context, Partnership partnership) {
@@ -39,6 +54,7 @@ public class PartnershipActivity extends Activity {
         intent.putExtra("name", partnership.getName());
         intent.putExtra("description", partnership.getDescription());
         intent.putExtra("color", partnership.getColor());
+        intent.putExtra("link", partnership.getLink());
         return intent;
     }
 
