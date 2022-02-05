@@ -39,8 +39,6 @@ public class DefisFragment extends Fragment {
         defisListView.setAdapter(defisListAdapter);
         proposeButton = root.findViewById(R.id.propose_defi);
 
-        refresh(()->{});
-
         SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
         swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
 
