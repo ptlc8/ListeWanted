@@ -45,7 +45,7 @@ public class EventActivity extends AppCompatActivity {
         binding.textDescription.setText(description);
         binding.textPlace.setText(place);
         int backgroundResourceId = event.getDrawableResourceId(this);
-        if (event.getDrawableResourceId(this) != 0)
+        if (backgroundResourceId != 0)
             binding.toolbarLayout.setBackgroundResource(backgroundResourceId);
         if (startTime != -1) {
             System.out.println(startTime);
@@ -70,9 +70,9 @@ public class EventActivity extends AppCompatActivity {
         if (startTime < new Date().getTime())
             shareButton.setVisibility(View.INVISIBLE);
 
-        findViewById(R.id.text_place).setOnClickListener(v->{
+        /*findViewById(R.id.text_place).setOnClickListener(v->{
             Notifications.sendNotification(this, Notifications.createEventNotification(this, new Event(eventId, name, startTime, endTime, place, description)), eventId);
-        });
+        });*/ // only for debug
     }
 
     private String format(String format, long time) {
