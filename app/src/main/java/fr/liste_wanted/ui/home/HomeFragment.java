@@ -1,6 +1,9 @@
 package fr.liste_wanted.ui.home;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +28,13 @@ import fr.liste_wanted.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
+    private static final String
+            FACEBOOK = "https://www.facebook.com/BDERunWild/", // TODO : à modifier
+            INSTAGRAM = "https://www.instagram.com/ptlc8/", // TODO : à modifier
+            YOUTUBE = "https://www.youtube.com/channel/UCYMikqdthiDtJcJlsAOOE-Q", // TODO : à modifier
+            TELEGRAM = "https://t.me/joinchat/MNxDBfASdc5jNzE8", // TODO : à modifier
+            WEBSITE = "https://liste-wanted.fr";
+
     private FragmentHomeBinding binding;
     List<Pole> poles;
     ListView polesView;
@@ -35,8 +45,28 @@ public class HomeFragment extends Fragment {
 
         polesView = root.findViewById(R.id.list_poles);
 
-        poles = getPolesFromJSON(getContext());
+        poles = getPolesFromJSON(requireContext());
         polesView.setAdapter(new PolesAdapter(getContext(), poles, 3));
+
+        binding.facebook.setOnClickListener(view -> {
+            try {
+                requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?"+FACEBOOK)));
+            } catch (ActivityNotFoundException e) {
+                requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(FACEBOOK)));
+            }
+        });
+        binding.instagram.setOnClickListener(view -> {
+            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(INSTAGRAM)));
+        });
+        binding.youtube.setOnClickListener(view -> {
+            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE)));
+        });
+        binding.telegram.setOnClickListener(view -> {
+            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(TELEGRAM)));
+        });
+        binding.website.setOnClickListener(view -> {
+            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(WEBSITE)));
+        });
 
         return root;
     }
