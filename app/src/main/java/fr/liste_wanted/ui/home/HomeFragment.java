@@ -53,29 +53,8 @@ public class HomeFragment extends Fragment {
         LinearLayout polesView = binding.listPoles;
         List<Pole> poles = getPolesFromJSON(requireContext());
         int membersPerRow = getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT?3:6;
-        for (Pole pole : poles) {
-            View poleView = inflater.inflate(R.layout.view_pole, polesView, false);
-            ((TextView)poleView.findViewById(R.id.text_name)).setText(pole.getName());
-            LinearLayout membersGrid = poleView.findViewById(R.id.linear_pole);
-            for (int l = 0; l < pole.size()*1f/ membersPerRow; l++) {
-                LinearLayout row = (LinearLayout) inflater.inflate(R.layout.row, membersGrid, false);
-                row.setWeightSum(membersPerRow);
-                for (int j = l* membersPerRow; j < (l+1)*membersPerRow && j < pole.size(); j++) {
-                    View memberView = inflater.inflate(R.layout.view_member, row, false);
-                    Member member = pole.get(j);
-                    ((TextView) memberView.findViewById(R.id.name)).setText(member.getFirstname());
-                    ((TextView) memberView.findViewById(R.id.nickname)).setText(member.getNickname());
-                    ((TextView) memberView.findViewById(R.id.role)).setText(member.getRole());
-                    if (member.getRole() == null)
-                        ((TextView) memberView.findViewById(R.id.role)).setHeight(0);
-                    ((TextView) memberView.findViewById(R.id.description)).setText(member.getDescription());
-                    ((ImageView) memberView.findViewById(R.id.picture)).setImageResource(member.getPictureResourceId(inflater.getContext()));
-                    row.addView(memberView);
-                }
-                membersGrid.addView(row);
-            }
-            polesView.addView(poleView);
-        }
+        for (Pole pole : poles)
+            polesView.addView(createPoleView(inflater, polesView, pole, membersPerRow));
 
         return root;
     }
@@ -84,6 +63,30 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private static View createPoleView(LayoutInflater inflater, ViewGroup root, Pole pole, int membersPerRow) {
+        View poleView = inflater.inflate(R.layout.view_pole, root, false);
+        ((TextView)poleView.findViewById(R.id.text_name)).setText(pole.getName());
+        LinearLayout membersGrid = poleView.findViewById(R.id.linear_pole);
+        for (int l = 0; l < pole.size()*1f/ membersPerRow; l++) {
+            LinearLayout row = (LinearLayout) inflater.inflate(R.layout.row, membersGrid, false);
+            row.setWeightSum(membersPerRow);
+            for (int j = l* membersPerRow; j < (l+1)*membersPerRow && j < pole.size(); j++) {
+                View memberView = inflater.inflate(R.layout.view_member, row, false);
+                Member member = pole.get(j);
+                ((TextView) memberView.findViewById(R.id.name)).setText(member.getFirstname());
+                ((TextView) memberView.findViewById(R.id.nickname)).setText(member.getNickname());
+                ((TextView) memberView.findViewById(R.id.role)).setText(member.getRole());
+                if (member.getRole() == null)
+                    ((TextView) memberView.findViewById(R.id.role)).setHeight(0);
+                ((TextView) memberView.findViewById(R.id.description)).setText(member.getDescription());
+                ((ImageView) memberView.findViewById(R.id.picture)).setImageResource(member.getPictureResourceId(inflater.getContext()));
+                row.addView(memberView);
+            }
+            membersGrid.addView(row);
+        }
+        return poleView;
     }
 
     protected static List<Pole> getPolesFromJSON(Context context) {
