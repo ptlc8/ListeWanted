@@ -46,7 +46,7 @@ public class PartnershipsFragment extends Fragment {
         List<Partnership> partnerships = new ArrayList<>();
         String json = "";
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.partenerships)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.partnerships)));
             String line;
             while ((line = reader.readLine()) != null)
                 json += line + "\n";
