@@ -6,7 +6,7 @@
     android:padding="1dp"
     android:orientation="vertical"
     android:background="@color/main"
-    android:layout_margin="1dp" >
+    android:layout_margin="1dp">
 
     <ImageView
         android:id="@+id/picture"

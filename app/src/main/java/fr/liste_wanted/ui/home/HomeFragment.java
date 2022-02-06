@@ -3,6 +3,7 @@ package fr.liste_wanted.ui.home;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
         polesView = root.findViewById(R.id.list_poles);
 
         poles = getPolesFromJSON(requireContext());
-        polesView.setAdapter(new PolesAdapter(getContext(), poles, 3));
+        polesView.setAdapter(new PolesAdapter(getContext(), poles, getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT?3:6));
 
         binding.facebook.setOnClickListener(view -> {
             try {
@@ -55,18 +56,10 @@ public class HomeFragment extends Fragment {
                 requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(FACEBOOK)));
             }
         });
-        binding.instagram.setOnClickListener(view -> {
-            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(INSTAGRAM)));
-        });
-        binding.youtube.setOnClickListener(view -> {
-            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE)));
-        });
-        binding.telegram.setOnClickListener(view -> {
-            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(TELEGRAM)));
-        });
-        binding.website.setOnClickListener(view -> {
-            requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(WEBSITE)));
-        });
+        binding.instagram.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(INSTAGRAM))));
+        binding.youtube.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE))));
+        binding.telegram.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(TELEGRAM))));
+        binding.website.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(WEBSITE))));
 
         return root;
     }

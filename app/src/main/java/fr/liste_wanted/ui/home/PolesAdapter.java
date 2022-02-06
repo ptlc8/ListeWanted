@@ -62,22 +62,18 @@ public class PolesAdapter extends BaseAdapter {
         LinearLayout membersGrid = poleView.findViewById(R.id.linear_pole);
         for (int l = 0; l < pole.size()*1f/ membersPerRow; l++) {
             LinearLayout row = (LinearLayout) inflater.inflate(R.layout.row, membersGrid, false);
-            for (int j = l* membersPerRow; j < (l+1)* membersPerRow; j++) {
-                if (j >= pole.size()) {
-                    View emptyView = inflater.inflate(R.layout.column, row, false);
-                    row.addView(emptyView);
-                } else {
-                    View memberView = inflater.inflate(R.layout.view_member, row, false);
-                    Member member = pole.get(j);
-                    ((TextView) memberView.findViewById(R.id.name)).setText(member.getFirstname());
-                    ((TextView) memberView.findViewById(R.id.nickname)).setText(member.getNickname());
-                    ((TextView) memberView.findViewById(R.id.role)).setText(member.getRole());
-                    if (member.getRole() == null)
-                        ((TextView) memberView.findViewById(R.id.role)).setHeight(0);
-                    ((TextView) memberView.findViewById(R.id.description)).setText(member.getDescription());
-                    ((ImageView) memberView.findViewById(R.id.picture)).setImageResource(member.getPictureResourceId(inflater.getContext()));
-                    row.addView(memberView);
-                }
+            row.setWeightSum(membersPerRow);
+            for (int j = l* membersPerRow; j < (l+1)*membersPerRow && j < pole.size(); j++) {
+                View memberView = inflater.inflate(R.layout.view_member, row, false);
+                Member member = pole.get(j);
+                ((TextView) memberView.findViewById(R.id.name)).setText(member.getFirstname());
+                ((TextView) memberView.findViewById(R.id.nickname)).setText(member.getNickname());
+                ((TextView) memberView.findViewById(R.id.role)).setText(member.getRole());
+                if (member.getRole() == null)
+                    ((TextView) memberView.findViewById(R.id.role)).setHeight(0);
+                ((TextView) memberView.findViewById(R.id.description)).setText(member.getDescription());
+                ((ImageView) memberView.findViewById(R.id.picture)).setImageResource(member.getPictureResourceId(inflater.getContext()));
+                row.addView(memberView);
             }
             membersGrid.addView(row);
         }
