@@ -30,7 +30,7 @@
             android:id="@+id/propose_defi"
             android:text="@string/proposer_un_defi"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="24dp"
             android:layout_weight="1" />
     </LinearLayout>
 

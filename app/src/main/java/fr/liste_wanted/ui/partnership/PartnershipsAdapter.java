@@ -44,9 +44,10 @@ public class PartnershipsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View partnershipView, ViewGroup viewGroup) {
+        if (partnershipView==null)
+            partnershipView = inflater.inflate(R.layout.view_partnership, viewGroup, false);
         Partnership partnership = partnerships.get(i);
-        View partnershipView = inflater.inflate(R.layout.view_partnership, viewGroup, false);
         ((TextView)partnershipView.findViewById(R.id.name)).setText(partnership.getName());
         ((ImageView)partnershipView.findViewById(R.id.image_partnership)).setImageResource(partnership.getDrawableResourceId(context));
         if (partnership.getColor() != null)

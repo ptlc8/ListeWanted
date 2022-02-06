@@ -54,11 +54,11 @@
                 android:padding="12dp"
                 android:src="@drawable/ic_website"/>
         </LinearLayout>
-        <fr.liste_wanted.ui.WrapListView
+        <LinearLayout
             android:id="@+id/list_poles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="NestedScrolling" />
+            android:orientation="vertical" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

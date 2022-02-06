@@ -42,13 +42,14 @@ public class EventsAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(int i, View eventView, ViewGroup viewGroup) {
+        if (eventView==null)
+            eventView = inflater.inflate(R.layout.view_event, viewGroup, false);
         Event event = events.get(i);
-        View eventView = inflater.inflate(R.layout.view_event, viewGroup, false);
         ((TextView)eventView.findViewById(R.id.name)).setText(event.getName());
         ((ImageView)eventView.findViewById(R.id.image_event)).setImageResource(event.getDrawableResourceId(inflater.getContext()));
         long startTime = event.getStartTime();

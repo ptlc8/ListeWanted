@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fr.liste_wanted.ui.WrapListView
+    <ListView
         android:id="@+id/list_partnerships"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
