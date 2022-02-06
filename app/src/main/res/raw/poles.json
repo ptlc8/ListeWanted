@@ -37,7 +37,7 @@
         "name": "Alicia Beguin",
         "nickname": "Abadakor",
         "desc": "",
-        "tag": "Vice-trésorière"
+        "tag": "Trésorière"
       }
     ]
   },
@@ -46,13 +46,13 @@
     "members":[
       {
         "name": "Martin Valignon",
-        "nickname": "Vodkarambar",
-        "desc": "Vous avez du parquais ? Il a des carambars !",
+        "nickname": "Paul Khomme",
+        "desc": "Vous avez du parquais ? ^-^",
         "tag": "Respo Soirée"
       },
       {
         "name": "Dorian Fuvel",
-        "nickname": "Cheer'If 316",
+        "nickname": "Cheer'If 345",
         "desc": "Un sombre passé..."
       },
       {
@@ -61,19 +61,14 @@
         "desc": "Qu'est-ce qu'il fait là ? Un pûr hasard !"
       },
       {
-        "name": "Hugo Ribeiro",
-        "nickname": "Ghost Rider",
-        "desc": "On suppose qu'il préfère sa moto aux réunions, mais on n'a jamais pu lui demander"
-      },
-      {
         "name": "Mattéo Riedinger",
         "nickname": "IKEA",
-        "desc": "Vous avez besoin de chaises, d'une table ou d'un lit ? Vous savez ou chercher..."
+        "desc": "Vous avez besoin de chaises, d'une table ou d'un lit ? Vous savez où chercher..."
       },
       {
         "name": "Sophia Mounjeddine",
         "nickname": "Dr Water",
-        "desc": ""
+        "desc": "Jamais sans sa bouteille"
       },
       {
         "name": "Ayann Mamodaly Samdjee",
@@ -94,7 +89,7 @@
       {
         "name": "Marie Trutet",
         "nickname": "Before",
-        "desc": ""
+        "desc": "Pas encore partie, et déjà fumée"
       },
       {
         "name": "Marien Mailhot",
@@ -119,19 +114,24 @@
       {
         "name": "Edwin Amrein",
         "nickname": "L'alchimiste",
-        "desc": "Lui même ne sait pas ce qu'il met dans ses mélanges mais l'imporant c'est que c'est bon (et bien fort)",
+        "desc": "Lui même ne sait pas ce qu'il met dans ses mélanges mais l'important c'est que c'est bon (et bien fort)",
         "tag": "Respo Com'",
         "id": 69
       },
       {
         "name": "Antoine Moreau",
         "nickname": "Le truand",
-        "desc": "Ses profs ne le connaissent pas, ses camarades ne l'ont jamais vu, ses bulletins sont blancs comme neige, mais il continue de valider ses semestres..."
+        "desc": "Ses profs et ses camarades ne l'ont jamais vu, ses bulletins sont vides, mais il continue de valider ses semestres..."
       },
       {
         "name": "Eyal Gros",
         "nickname": "Dr Salé",
-        "desc": "Si vous tenez à votre audition, évitez de le contrarier"
+        "desc": "Si vous tenez à votre audition, évitez de le contrarier, ou de jouer à Pokémon avec lui"
+      },
+      {
+        "name": "Flo Hinoveanu",
+        "nickname": "Poti'Blagueur",
+        "desc": "La réponse à tous les blancs !"
       }
     ]
   },
@@ -200,6 +200,11 @@
   {
     "name": "Pôle-Yvalent",
     "members": [
+      {
+        "name": "Hugo Ribeiro",
+        "nickname": "Ghost Rider",
+        "desc": "On suppose qu'il préfère sa moto aux réunions, mais on n'a jamais pu lui demander"
+      },
       {
         "name": "Adam Ben Chaabane",
         "nickname": "Aladdin²",
