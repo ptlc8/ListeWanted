@@ -30,7 +30,7 @@ import fr.liste_wanted.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private static final String
-            FACEBOOK = "https://www.facebook.com/BDERunWild/", // TODO : à modifier
+            FACEBOOK = "https://www.facebook.com/n/?BDERunWild", // TODO : à modifier
             INSTAGRAM = "https://www.instagram.com/ptlc8/", // TODO : à modifier
             YOUTUBE = "https://www.youtube.com/channel/UCYMikqdthiDtJcJlsAOOE-Q", // TODO : à modifier
             TELEGRAM = "https://t.me/joinchat/MNxDBfASdc5jNzE8", // TODO : à modifier
@@ -49,13 +49,7 @@ public class HomeFragment extends Fragment {
         poles = getPolesFromJSON(requireContext());
         polesView.setAdapter(new PolesAdapter(getContext(), poles, getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT?3:6));
 
-        binding.facebook.setOnClickListener(view -> {
-            try {
-                requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?"+FACEBOOK)));
-            } catch (ActivityNotFoundException e) {
-                requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(FACEBOOK)));
-            }
-        });
+        binding.facebook.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(FACEBOOK))));
         binding.instagram.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(INSTAGRAM))));
         binding.youtube.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE))));
         binding.telegram.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(TELEGRAM))));
