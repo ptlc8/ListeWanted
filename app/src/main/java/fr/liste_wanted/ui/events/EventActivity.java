@@ -46,7 +46,7 @@ public class EventActivity extends AppCompatActivity {
         binding.textPlace.setText(place);
         int backgroundResourceId = event.getDrawableResourceId(this);
         if (backgroundResourceId != 0)
-            binding.toolbarLayout.setBackgroundResource(backgroundResourceId);
+            binding.toolbarImage.setImageResource(backgroundResourceId);
         if (startTime != -1) {
             System.out.println(startTime);
             System.out.println(endTime);

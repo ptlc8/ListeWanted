@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -36,7 +37,7 @@ public class PartnershipActivity extends Activity {
         toolbarLayout.setBackgroundColor(Color.parseColor(partnership.getColor()));
         int backgroundResourceId = partnership.getDrawableResourceId(this);
         if (backgroundResourceId != 0)
-            toolbarLayout.setBackgroundResource(backgroundResourceId);
+            ((ImageView)findViewById(R.id.toolbar_image)).setImageResource(backgroundResourceId);
 
         FloatingActionButton openButton = findViewById(R.id.button_open);
         System.out.println(partnership.getLink());
