@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
                 if (member.getRole() == null)
                     ((TextView) memberView.findViewById(R.id.role)).setHeight(0);
                 ((TextView) memberView.findViewById(R.id.description)).setText(member.getDescription());
-                ((ImageView) memberView.findViewById(R.id.picture)).setImageResource(member.getPictureResourceId(inflater.getContext()));
+                ((ImageView) memberView.findViewById(R.id.picture)).setImageBitmap(member.getPictureBitmap(inflater.getContext()));
                 row.addView(memberView);
             }
             membersGrid.addView(row);
