@@ -56,7 +56,6 @@ public class Member {
     }
 
     public int getPictureResourceId(Context context) {
-        System.out.println("member_"+this.nickname.toLowerCase().replaceAll("[^a-z]","_"));
         int pictureResource = context.getResources().getIdentifier("member_"+this.nickname.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
         if (pictureResource==0) return R.drawable.unset_picture;
         return pictureResource;
