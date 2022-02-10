@@ -46,8 +46,8 @@
     "members":[
       {
         "name": "Martin Valignon",
-        "nickname": "Paul Khomme",
-        "desc": "Vous avez du parquais ? ^-^",
+        "nickname": "Polkomsoulburo",
+        "desc": "En plus de faire tout le boulot, il s'est fait la prez",
         "tag": "Respo Soirée"
       },
       {
@@ -100,11 +100,6 @@
         "name": "Margot Rouillé",
         "nickname": "Câlin",
         "desc": ""
-      },
-      {
-        "name": "Samy Lenormand-boucherit",
-        "nickname": "Samy The Kid",
-        "desc": ""
       }
     ]
   },
@@ -132,6 +127,11 @@
         "name": "Flo Hinoveanu",
         "nickname": "Poti'Blagueur",
         "desc": "La réponse à tous les blancs !"
+      },
+      {
+        "name": "Aleena Johney",
+        "nickname": "Beurre sale",
+        "desc": ""
       }
     ]
   },
@@ -206,8 +206,8 @@
         "desc": "On suppose qu'il préfère sa moto aux réunions, mais on n'a jamais pu lui demander"
       },
       {
-        "name": "Adam Ben Chaabane",
-        "nickname": "Aladdin²",
+        "name": "Samy Lenormand-boucherit",
+        "nickname": "Samy The Kid",
         "desc": ""
       }
     ]
