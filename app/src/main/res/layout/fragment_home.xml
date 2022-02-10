@@ -20,6 +20,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                android:contentDescription="@string/facebook"
                 android:src="@drawable/ic_facebook"/>
             <ImageView
                 android:id="@+id/instagram"
@@ -28,6 +29,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                android:contentDescription="@string/instagram"
                 android:src="@drawable/ic_instagram"/>
             <ImageView
                 android:id="@+id/telegram"
@@ -44,6 +46,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                android:contentDescription="@string/youtube"
                 android:src="@drawable/ic_youtube"/>
             <ImageView
                 android:id="@+id/website"
@@ -52,6 +55,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                android:contentDescription="@string/website"
                 android:src="@drawable/ic_website"/>
         </LinearLayout>
         <LinearLayout
