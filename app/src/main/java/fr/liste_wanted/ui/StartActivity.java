@@ -20,6 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Pole;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -51,7 +52,12 @@ public class StartActivity extends AppCompatActivity {
             })
             .into(((ImageView)findViewById(R.id.imageView)));
 
+        // Pré-chargement des photos de membres
+        new Thread(() -> {
+            Pole.getPolesFromJSON(StartActivity.this).forEach(p -> p.forEach(m -> m.getPictureBitmap(StartActivity.this)));
+        }).start();
 
+        // Au cas où le gif ne fonctionne pas
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

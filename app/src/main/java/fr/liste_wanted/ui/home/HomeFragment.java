@@ -15,13 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.liste_wanted.R;
@@ -51,7 +44,7 @@ public class HomeFragment extends Fragment {
         binding.website.setOnClickListener(view -> requireContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(WEBSITE))));
 
         LinearLayout polesView = binding.listPoles;
-        List<Pole> poles = getPolesFromJSON(requireContext());
+        List<Pole> poles = Pole.getPolesFromJSON(requireContext());
         int membersPerRow = getResources().getConfiguration().orientation==Configuration.ORIENTATION_PORTRAIT?3:6;
         for (Pole pole : poles)
             polesView.addView(createPoleView(inflater, polesView, pole, membersPerRow));
@@ -87,28 +80,6 @@ public class HomeFragment extends Fragment {
             membersGrid.addView(row);
         }
         return poleView;
-    }
-
-    protected static List<Pole> getPolesFromJSON(Context context) {
-        List<Pole> poles = new ArrayList<>();
-        String json = "";
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.poles)));
-            String line;
-            while ((line = reader.readLine()) != null)
-                json += line + "\n";
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            JSONArray jsonPoles = new JSONArray(json);
-            for (int i = 0; i < jsonPoles.length(); i++)
-                poles.add(new Pole(jsonPoles.getJSONObject(i)));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return poles;
     }
 
 }
