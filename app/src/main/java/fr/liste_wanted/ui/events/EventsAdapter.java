@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
@@ -51,7 +53,9 @@ public class EventsAdapter extends BaseAdapter {
             eventView = inflater.inflate(R.layout.view_event, viewGroup, false);
         Event event = events.get(i);
         ((TextView)eventView.findViewById(R.id.name)).setText(event.getName());
-        ((ImageView)eventView.findViewById(R.id.image_event)).setImageResource(event.getDrawableResourceId(inflater.getContext()));
+        ImageView imageView = eventView.findViewById(R.id.image_event);
+        if (event.hasImageUrl()) Glide.with(eventView).load(event.getImageUrl()).into(imageView);
+        else imageView.setImageResource(event.getDrawableResourceId(inflater.getContext()));
         long startTime = event.getStartTime();
         Locale locale = Locale.getDefault();
         ((TextView)eventView.findViewById(R.id.weekday)).setText(new SimpleDateFormat("E",locale).format(startTime));

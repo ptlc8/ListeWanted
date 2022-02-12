@@ -2,6 +2,8 @@ package fr.liste_wanted.data;
 
 import android.content.Context;
 
+import com.bumptech.glide.Glide;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +15,7 @@ public class Event {
     private long endTime;
     private String place;
     private String description;
+    private String imageUrl = null;
 
     public Event(int id, String name, long startTime, long endTime, String place, String description) {
         this.id = id;
@@ -30,6 +33,8 @@ public class Event {
         this.endTime = json.getLong("end")*1000L;
         this.place = json.getString("place");
         this.description = json.getString("description");
+        if (json.has("imageUrl"))
+            imageUrl = json.getString("imageUrl");
     }
 
     public int getId() {
@@ -58,5 +63,13 @@ public class Event {
 
     public int getDrawableResourceId(Context context) {
         return context.getResources().getIdentifier("event_"+name.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
+    }
+
+    public boolean hasImageUrl() {
+        return imageUrl!=null;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
