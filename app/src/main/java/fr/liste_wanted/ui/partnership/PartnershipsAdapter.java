@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +28,11 @@ public class PartnershipsAdapter extends BaseAdapter {
         this.context = context;
         this.partnerships = partnerships;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public void setPartnerships(List<Partnership> partnerships) {
+        this.partnerships = partnerships;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -49,9 +56,11 @@ public class PartnershipsAdapter extends BaseAdapter {
             partnershipView = inflater.inflate(R.layout.view_partnership, viewGroup, false);
         Partnership partnership = partnerships.get(i);
         ((TextView)partnershipView.findViewById(R.id.name)).setText(partnership.getName());
-        ((ImageView)partnershipView.findViewById(R.id.image_partnership)).setImageResource(partnership.getDrawableResourceId(context));
+        ImageView imageView = partnershipView.findViewById(R.id.image_partnership);
+        if (partnership.hasImageUrl()) Glide.with(partnershipView).load(partnership.getImageUrl()).into(imageView);
+        else imageView.setImageResource(partnership.getDrawableResourceId(context));
         if (partnership.getColor() != null)
-            ((ImageView)partnershipView.findViewById(R.id.image_partnership)).setBackgroundColor(Color.parseColor(partnership.getColor()));
+            imageView.setBackgroundColor(Color.parseColor(partnership.getColor()));
         return partnershipView;
     }
 }

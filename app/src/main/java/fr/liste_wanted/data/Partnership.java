@@ -11,6 +11,7 @@ public class Partnership {
     private String description;
     private String color;
     private String link;
+    private String imageUrl = null;
 
     public Partnership(String name, String description, String color) {
         this(name, description, color, null);
@@ -28,6 +29,8 @@ public class Partnership {
         this.color = json.getString("color");
         if (json.has("link"))
             this.link = json.getString("link");
+        if (json.has("imageUrl"))
+            this.link = json.getString("imageUrl");
     }
 
     public String getName() {
@@ -48,5 +51,13 @@ public class Partnership {
 
     public int getDrawableResourceId(Context context) {
         return context.getResources().getIdentifier("partnership_"+name.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
+    }
+
+    public boolean hasImageUrl() {
+        return imageUrl!=null;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
