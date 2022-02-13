@@ -9,9 +9,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list_partnerships"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/connection_error"
+            layout="@layout/view_connection_error"
+            android:visibility="gone" />
+        <ListView
+            android:id="@+id/list_partnerships"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

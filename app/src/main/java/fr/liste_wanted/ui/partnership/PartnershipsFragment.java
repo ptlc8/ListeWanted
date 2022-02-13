@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import fr.liste_wanted.R;
+import fr.liste_wanted.data.Partnership;
 import fr.liste_wanted.data.Partnerships;
 import fr.liste_wanted.databinding.FragmentPartnershipsBinding;
 
@@ -46,12 +47,16 @@ public class PartnershipsFragment extends Fragment {
         partnerships.refresh(partnerships -> {
             if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
+                binding.connectionError.getRoot().setVisibility(View.GONE);
                 partnershipsAdapter.setPartnerships(partnerships);
             });
             onRefresh.run();
         }, ioe -> {
             if (getActivity()==null) return;
-            getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show());
+            getActivity().runOnUiThread(() -> {
+                binding.connectionError.getRoot().setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show();
+            });
             onRefresh.run();
         }, se -> {
             if (getActivity()==null) return;
