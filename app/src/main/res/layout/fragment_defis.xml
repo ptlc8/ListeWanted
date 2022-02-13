@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,6 +15,7 @@
             android:id="@+id/text_defis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/title_defis"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -26,6 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="11" />
+        <include
+            layout="@layout/view_connection_error"
+            android:visibility="gone" />
         <Button
             android:id="@+id/propose_defi"
             android:text="@string/proposer_un_defi"

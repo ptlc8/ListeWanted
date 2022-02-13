@@ -26,6 +26,7 @@ public class DefisFragment extends Fragment {
     private TextView defisText;
     private DefisListAdapter defisListAdapter;
     private Button proposeButton;
+    private View noConnectionView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         defis = new Defis();
@@ -38,11 +39,12 @@ public class DefisFragment extends Fragment {
         defisListAdapter = new DefisListAdapter(getContext());
         defisListView.setAdapter(defisListAdapter);
         proposeButton = root.findViewById(R.id.propose_defi);
+        noConnectionView = root.findViewById(R.id.connection_error);
 
         SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
         swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
 
-        root.findViewById(R.id.propose_defi).setOnClickListener(event -> {
+        proposeButton.setOnClickListener(event -> {
             startActivity(new Intent(getContext(), SendDefiActivity.class));
         });
 
@@ -59,6 +61,8 @@ public class DefisFragment extends Fragment {
         defis.refresh(defis -> {
             if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
+                noConnectionView.setVisibility(View.GONE);
+                binding.listDefis.setVisibility(View.VISIBLE);
                 defisListAdapter.setDefis(defis);
                 proposeButton.setEnabled(defis.canSubmit());
                 int finishedDefisCount = 0;
@@ -70,7 +74,11 @@ public class DefisFragment extends Fragment {
             onRefresh.run();
         }, ioe -> {
             if (getActivity()==null) return;
-            getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show());
+            getActivity().runOnUiThread(() -> {
+                if (defis.getDefis().size() == 0)
+                    noConnectionView.setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show();
+            });
             onRefresh.run();
         }, se -> {
             if (getActivity()==null) return;

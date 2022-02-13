@@ -24,6 +24,10 @@
                 android:layout_marginEnd="8dp"
                 android:textAlignment="center"
                 android:textSize="24sp" />
+            <include
+                layout="@layout/view_connection_error"
+                android:id="@+id/connection_error"
+                android:visibility="gone" />
             <fr.liste_wanted.ui.WrapListView
                 android:id="@+id/list_events"
                 android:layout_width="match_parent"

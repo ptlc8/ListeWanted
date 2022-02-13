@@ -26,12 +26,22 @@ public class EventsFragment extends Fragment {
 
     private FragmentEventsBinding binding;
     private Events events;
+    private List<Event> pastEvents = new ArrayList<>();
+    private List<Event> comingEvents = new ArrayList<>();
+    private EventsAdapter pastEventsAdapter;
+    private EventsAdapter comingEventsAdapter;
+    private View connectionErrorView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentEventsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         events = new Events();
+
+        binding.listEvents.setAdapter(comingEventsAdapter = new EventsAdapter(getContext(), comingEvents));
+        binding.listPastEvents.setAdapter(pastEventsAdapter = new EventsAdapter(getContext(), pastEvents));
+        binding.listEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(comingEvents.get(i)));
+        binding.listPastEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(pastEvents.get(i)));
 
         SwipeRefreshLayout swipe2refresh = binding.swipe2refresh;
         swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
@@ -49,33 +59,25 @@ public class EventsFragment extends Fragment {
         events.refresh(events -> {
             if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
-                List<Event> comingEvents = new ArrayList<>();
-                List<Event> pastEvents = new ArrayList<>();
-                long now = new Date().getTime();
-                for (Event event : events) {
-                    if (event.getEndTime() < now)
-                        pastEvents.add(event);
-                    else
-                        comingEvents.add(event);
-                }
-                comingEvents.sort((event1,event2) -> (int)(event1.getStartTime()-event2.getStartTime()));
-                pastEvents.sort((event1,event2) -> (int)(event2.getStartTime()-event1.getStartTime()));
-
-                binding.listEvents.setAdapter(new EventsAdapter(getContext(), comingEvents));
-                binding.listPastEvents.setAdapter(new EventsAdapter(getContext(), pastEvents));
-                binding.listEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(comingEvents.get(i)));
-                binding.listPastEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(pastEvents.get(i)));
-
+                binding.connectionError.getRoot().setVisibility(View.GONE);
+                comingEvents = events.getComingEvents();
+                pastEvents = events.getPastEvents();
                 for (Event event : comingEvents) {
                     Notification notification = Notifications.createEventNotification(getContext(), event);
                     long delayInMs = event.getStartTime()-System.currentTimeMillis();
                     Notifications.scheduleNotification(getContext(), notification, event.getId(), event.getId()*2+1, delayInMs);
                 }
+                comingEventsAdapter.setEvents(comingEvents);
+                pastEventsAdapter.setEvents(pastEvents);
             });
             onRefresh.run();
         }, ioe -> {
             if (getActivity()==null) return;
-            getActivity().runOnUiThread(() -> Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show());
+            getActivity().runOnUiThread(() -> {
+                if (events.size() == 0)
+                    binding.connectionError.getRoot().setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show();
+            });
             onRefresh.run();
         }, se -> {
             if (getActivity()==null) return;

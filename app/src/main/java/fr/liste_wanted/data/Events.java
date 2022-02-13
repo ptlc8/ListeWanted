@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -19,6 +20,28 @@ import fr.liste_wanted.R;
 public class Events extends ArrayList<Event> {
 
     public Events() {}
+
+    public List<Event> getPastEvents() {
+        List<Event> pastEvents = new ArrayList<>();
+        long now = new Date().getTime();
+        for (Event event : this) {
+            if (event.getEndTime() < now)
+                pastEvents.add(event);
+        }
+        pastEvents.sort((event1,event2) -> (int)(event2.getStartTime()-event1.getStartTime()));
+        return pastEvents;
+    }
+
+    public List<Event> getComingEvents() {
+        List<Event> comingEvents = new ArrayList<>();
+        long now = new Date().getTime();
+        for (Event event : this) {
+            if (event.getEndTime() >= now)
+                comingEvents.add(event);
+        }
+        comingEvents.sort((event1,event2) -> (int)(event1.getStartTime()-event2.getStartTime()));
+        return comingEvents;
+    }
 
     public void refresh(Consumer<Events> onResponse, Consumer<IOException> onRequestError, Consumer<String> onServerError) {
         HttpRequest.get(HttpRequest.API_URL+"/events/get.php", response -> {
