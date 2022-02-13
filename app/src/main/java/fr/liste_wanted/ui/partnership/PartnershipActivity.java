@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -35,9 +36,11 @@ public class PartnershipActivity extends Activity {
         toolbarLayout.setTitle(partnership.getName());
         ((TextView)findViewById(R.id.text_description)).setText(partnership.getDescription());
         toolbarLayout.setBackgroundColor(Color.parseColor(partnership.getColor()));
-        int backgroundResourceId = partnership.getDrawableResourceId(this);
-        if (backgroundResourceId != 0)
-            ((ImageView)findViewById(R.id.toolbar_image)).setImageResource(backgroundResourceId);
+        ImageView background = findViewById(R.id.toolbar_image);
+        if (partnership.hasImageUrl())
+            Glide.with(this).load(partnership.getImageUrl()).into(background);
+        else
+            background.setImageResource(partnership.getDrawableResourceId(this));
 
         FloatingActionButton openButton = findViewById(R.id.button_open);
         System.out.println(partnership.getLink());

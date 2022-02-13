@@ -2,12 +2,15 @@ package fr.liste_wanted.ui.events;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -44,9 +47,10 @@ public class EventActivity extends AppCompatActivity {
         binding.toolbarLayout.setTitle(name);
         binding.textDescription.setText(description);
         binding.textPlace.setText(place);
-        int backgroundResourceId = event.getDrawableResourceId(this);
-        if (backgroundResourceId != 0)
-            binding.toolbarImage.setImageResource(backgroundResourceId);
+        if (event.hasImageUrl())
+            Glide.with(this).load(event.getImageUrl()).into(binding.toolbarImage);
+        else
+            binding.toolbarImage.setImageResource(event.getDrawableResourceId(this));
         if (startTime != -1) {
             System.out.println(startTime);
             System.out.println(endTime);
