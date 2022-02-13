@@ -27,6 +27,7 @@
             android:layout_height="0dp"
             android:layout_weight="11" />
         <include
+            android:id="@+id/connection_error"
             layout="@layout/view_connection_error"
             android:visibility="gone" />
         <Button

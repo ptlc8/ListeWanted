@@ -1,13 +1,12 @@
 package fr.liste_wanted.ui.defis;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,10 +22,7 @@ public class DefisFragment extends Fragment {
 
     private Defis defis;
     private FragmentDefisBinding binding;
-    private TextView defisText;
     private DefisListAdapter defisListAdapter;
-    private Button proposeButton;
-    private View noConnectionView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         defis = new Defis();
@@ -34,18 +30,24 @@ public class DefisFragment extends Fragment {
         binding = FragmentDefisBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        defisText = root.findViewById(R.id.text_defis);
         final ListView defisListView = root.findViewById(R.id.list_defis);
         defisListAdapter = new DefisListAdapter(getContext());
         defisListView.setAdapter(defisListAdapter);
-        proposeButton = root.findViewById(R.id.propose_defi);
-        noConnectionView = root.findViewById(R.id.connection_error);
 
         SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
         swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
 
-        proposeButton.setOnClickListener(event -> {
-            startActivity(new Intent(getContext(), SendDefiActivity.class));
+        binding.proposeDefi.setOnClickListener(event -> startActivity(new Intent(getContext(), SendDefiActivity.class)));
+
+        binding.listDefis.setOnItemClickListener((adapterView, view, i, l) -> {
+            Defi defi = defis.getDefis().get(i);
+            if (defi.isFinished()) {
+                if (defi.getEvidenceLink()!=null && !defi.getEvidenceLink().equals("null") && !defi.getEvidenceLink().equals("")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(defi.getEvidenceLink())));
+                } else {
+                    Toast.makeText(requireContext(), R.string.inavailable_evidence, Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         return root;
@@ -61,22 +63,22 @@ public class DefisFragment extends Fragment {
         defis.refresh(defis -> {
             if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
-                noConnectionView.setVisibility(View.GONE);
+                binding.connectionError.getRoot().setVisibility(View.GONE);
                 binding.listDefis.setVisibility(View.VISIBLE);
                 defisListAdapter.setDefis(defis);
-                proposeButton.setEnabled(defis.canSubmit());
+                binding.proposeDefi.setEnabled(defis.canSubmit());
                 int finishedDefisCount = 0;
                 for (Defi defi : defis.getDefis())
                     if (defi.isFinished())
                         finishedDefisCount++;
-                defisText.setText(getString(R.string.finished_defis, finishedDefisCount));
+                binding.textDefis.setText(getString(R.string.finished_defis, finishedDefisCount));
             });
             onRefresh.run();
         }, ioe -> {
             if (getActivity()==null) return;
             getActivity().runOnUiThread(() -> {
                 if (defis.getDefis().size() == 0)
-                    noConnectionView.setVisibility(View.VISIBLE);
+                    binding.connectionError.getRoot().setVisibility(View.VISIBLE);
                 Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_LONG).show();
             });
             onRefresh.run();
