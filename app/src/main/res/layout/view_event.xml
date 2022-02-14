@@ -14,7 +14,8 @@
         android:layout_alignBottom="@id/data_event"
         android:scaleType="centerCrop"
         android:background="@color/main"
-        android:alpha="0.5" />
+        app:tint="#bbbbbb"
+        android:tintMode="multiply" />
     <LinearLayout
         android:id="@+id/data_event"
         android:layout_width="match_parent"
