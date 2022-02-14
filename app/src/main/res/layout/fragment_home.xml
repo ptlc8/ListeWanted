@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/background">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,8 +22,9 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                app:tint="@color/white"
                 android:contentDescription="@string/facebook"
-                android:src="@drawable/ic_facebook"/>
+                android:src="@drawable/ic_facebook" />
             <ImageView
                 android:id="@+id/instagram"
                 android:layout_width="64dp"
@@ -29,6 +32,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                app:tint="@color/white"
                 android:contentDescription="@string/instagram"
                 android:src="@drawable/ic_instagram"/>
             <ImageView
@@ -38,6 +42,8 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                app:tint="@color/white"
+                android:contentDescription="@string/telegram"
                 android:src="@drawable/ic_telegram"/>
             <ImageView
                 android:id="@+id/youtube"
@@ -46,6 +52,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                app:tint="@color/white"
                 android:contentDescription="@string/youtube"
                 android:src="@drawable/ic_youtube"/>
             <ImageView
@@ -55,6 +62,7 @@
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:padding="12dp"
+                app:tint="@color/white"
                 android:contentDescription="@string/website"
                 android:src="@drawable/ic_website"/>
         </LinearLayout>
