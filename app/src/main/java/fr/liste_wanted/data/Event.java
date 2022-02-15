@@ -17,7 +17,7 @@ public class Event {
     private String description;
     private String imageUrl = null;
 
-    public Event(int id, String name, long startTime, long endTime, String place, String description) {
+    public Event(int id, String name, long startTime, long endTime, String place, String description, String imageUrl) {
         this.id = id;
         this.name = name;
         this.startTime = startTime;

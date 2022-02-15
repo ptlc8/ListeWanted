@@ -18,6 +18,7 @@ import java.net.URI;
 
 import fr.liste_wanted.R;
 import fr.liste_wanted.data.Partnership;
+import fr.liste_wanted.databinding.ActivityPartnershipBinding;
 
 public class PartnershipActivity extends Activity {
 
@@ -30,21 +31,19 @@ public class PartnershipActivity extends Activity {
         String description = intent.getStringExtra("description");
         String color = intent.getStringExtra("color");
         String link = intent.getStringExtra("link");
-        Partnership partnership = new Partnership(name, description, color, link);
+        String imageUrl = intent.getStringExtra("imageUrl");
+        Partnership partnership = new Partnership(name, description, color, imageUrl, link);
 
         CollapsingToolbarLayout toolbarLayout = findViewById(R.id.toolbar_layout);
-        toolbarLayout.setTitle(partnership.getName());
+        ((TextView)findViewById(R.id.text_name)).setText(partnership.getName());
         ((TextView)findViewById(R.id.text_description)).setText(partnership.getDescription());
         toolbarLayout.setBackgroundColor(Color.parseColor(partnership.getColor()));
         ImageView background = findViewById(R.id.toolbar_image);
-        if (partnership.hasImageUrl())
-            Glide.with(this).load(partnership.getImageUrl()).into(background);
-        else
-            background.setImageResource(partnership.getDrawableResourceId(this));
+        if (partnership.hasImageUrl()) Glide.with(this).load(partnership.getImageUrl()).into(background);
+        else background.setImageResource(partnership.getDrawableResourceId(this));
 
         FloatingActionButton openButton = findViewById(R.id.button_open);
-        System.out.println(partnership.getLink());
-        if (partnership.getLink()!=null) {
+        if (partnership.getLink()!=null && !partnership.getLink().equals("null")) {
             openButton.setOnClickListener((view) ->
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(partnership.getLink())))
             );
@@ -59,6 +58,7 @@ public class PartnershipActivity extends Activity {
         intent.putExtra("description", partnership.getDescription());
         intent.putExtra("color", partnership.getColor());
         intent.putExtra("link", partnership.getLink());
+        intent.putExtra("imageUrl", partnership.getImageUrl());
         return intent;
     }
 

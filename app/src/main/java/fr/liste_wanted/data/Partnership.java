@@ -10,17 +10,18 @@ public class Partnership {
     private String name;
     private String description;
     private String color;
-    private String link;
+    private String link = null;
     private String imageUrl = null;
 
-    public Partnership(String name, String description, String color) {
-        this(name, description, color, null);
+    public Partnership(String name, String description, String color, String imageUrl) {
+        this(name, description, color, imageUrl, null);
     }
-    public Partnership(String name, String description, String color, String link) {
+    public Partnership(String name, String description, String color, String imageUrl, String link) {
         this.name = name;
         this.description = description;
         this.color = color;
         this.link = link;
+        this.imageUrl = imageUrl;
     }
 
     public Partnership(JSONObject json) throws JSONException  {
@@ -30,7 +31,7 @@ public class Partnership {
         if (json.has("link"))
             this.link = json.getString("link");
         if (json.has("imageUrl"))
-            this.link = json.getString("imageUrl");
+            this.imageUrl = json.getString("imageUrl");
     }
 
     public String getName() {

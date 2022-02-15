@@ -40,20 +40,17 @@ public class EventActivity extends AppCompatActivity {
         String place = intent.hasExtra("place") ? intent.getStringExtra("place") : "";
         long startTime = intent.getLongExtra("startTime", -1L);
         long endTime = intent.getLongExtra("endTime", startTime);
-        Event event = new Event(eventId, name, startTime, endTime, place, description);
+        String imageUrl = intent.getStringExtra("imageUrl");
+        Event event = new Event(eventId, name, startTime, endTime, place, description, imageUrl);
 
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         binding.toolbarLayout.setTitle(name);
         binding.textDescription.setText(description);
         binding.textPlace.setText(place);
-        if (event.hasImageUrl())
-            Glide.with(this).load(event.getImageUrl()).into(binding.toolbarImage);
-        else
-            binding.toolbarImage.setImageResource(event.getDrawableResourceId(this));
+        if (event.hasImageUrl()) Glide.with(this).load(event.getImageUrl()).into(binding.toolbarImage);
+        else binding.toolbarImage.setImageResource(event.getDrawableResourceId(this));
         if (startTime != -1) {
-            System.out.println(startTime);
-            System.out.println(endTime);
             if (startTime==endTime)
                 binding.time.setText(getString(R.string.time, format("H",startTime), format("mm",startTime)));
             else binding.time.setText(getString(R.string.time_interval, format("H",startTime), format("mm",startTime), format("H",endTime), format("mm",endTime)));
@@ -91,6 +88,7 @@ public class EventActivity extends AppCompatActivity {
         intent.putExtra("place", event.getPlace());
         intent.putExtra("startTime", event.getStartTime());
         intent.putExtra("endTime", event.getEndTime());
+        intent.putExtra("imageUrl", event.getImageUrl());
         return intent;
     }
 

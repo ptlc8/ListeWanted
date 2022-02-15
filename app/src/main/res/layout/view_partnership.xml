@@ -12,10 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/data_partnership"
         android:layout_alignBottom="@id/data_partnership"
-        android:scaleType="centerInside"
-        android:background="@color/main"
-        app:tint="#bbbbbb"
-        android:tintMode="multiply" />
+        android:scaleType="fitCenter"
+        android:background="@color/main" />
     <LinearLayout
         android:id="@+id/data_partnership"
         android:layout_width="match_parent"

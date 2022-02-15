@@ -54,11 +54,13 @@
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/description"
@@ -72,11 +74,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="16dp"
                     android:textSize="24sp"
+                    android:textColor="@color/black"
                     android:text="@string/description" />
                 <TextView
                     android:id="@+id/text_description"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/place"
@@ -90,11 +94,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginStart="16dp"
                     android:textSize="24sp"
-                    android:text="@string/place"/>
+                    android:textColor="@color/black"
+                    android:text="@string/place" />
                 <TextView
                     android:id="@+id/text_place"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
