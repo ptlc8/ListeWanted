@@ -66,8 +66,8 @@ public class Member {
         if (bitmaps.get(resourceId) != null)
             return bitmaps.get(resourceId);
         BitmapFactory.Options options = new BitmapFactory.Options();
-        if (resourceId != R.drawable.unset_picture)
-            options.inSampleSize = 4;
+        /*if (resourceId != R.drawable.unset_picture)
+            options.inSampleSize = 4;*/
         options.inScaled = true;
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId, options);
         bitmaps.put(resourceId, bitmap);
