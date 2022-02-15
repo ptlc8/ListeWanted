@@ -27,6 +27,7 @@ public class PartnershipsFragment extends Fragment {
 
         partnerships = new Partnerships();
 
+        binding.swipe2refresh.setRefreshing(true);
         binding.swipe2refresh.setOnRefreshListener(() -> refresh(() -> binding.swipe2refresh.setRefreshing(false)));
 
         binding.listPartnerships.setAdapter(partnershipsAdapter = new PartnershipsAdapter(getContext(), partnerships));
@@ -40,7 +41,7 @@ public class PartnershipsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        refresh(()->{});
+        refresh(()->binding.swipe2refresh.setRefreshing(false));
     }
 
     public void refresh(Runnable onRefresh) {

@@ -30,12 +30,11 @@ public class DefisFragment extends Fragment {
         binding = FragmentDefisBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final ListView defisListView = root.findViewById(R.id.list_defis);
         defisListAdapter = new DefisListAdapter(getContext());
-        defisListView.setAdapter(defisListAdapter);
+        binding.listDefis.setAdapter(defisListAdapter);
 
-        SwipeRefreshLayout swipe2refresh = root.findViewById(R.id.swipe2refresh);
-        swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
+        binding.swipe2refresh.setRefreshing(true);
+        binding.swipe2refresh.setOnRefreshListener(() -> refresh(() -> binding.swipe2refresh.setRefreshing(false)));
 
         binding.proposeDefi.setOnClickListener(event -> startActivity(new Intent(getContext(), SendDefiActivity.class)));
 
@@ -56,7 +55,7 @@ public class DefisFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        refresh(()->{});
+        refresh(() -> binding.swipe2refresh.setRefreshing(false));
     }
 
     public void refresh(Runnable onRefresh) {

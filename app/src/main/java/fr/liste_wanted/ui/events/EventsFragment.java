@@ -30,7 +30,6 @@ public class EventsFragment extends Fragment {
     private List<Event> comingEvents = new ArrayList<>();
     private EventsAdapter pastEventsAdapter;
     private EventsAdapter comingEventsAdapter;
-    private View connectionErrorView;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentEventsBinding.inflate(inflater, container, false);
@@ -43,8 +42,8 @@ public class EventsFragment extends Fragment {
         binding.listEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(comingEvents.get(i)));
         binding.listPastEvents.setOnItemClickListener((lView,view,i,l) -> showEvent(pastEvents.get(i)));
 
-        SwipeRefreshLayout swipe2refresh = binding.swipe2refresh;
-        swipe2refresh.setOnRefreshListener(() -> refresh(() -> swipe2refresh.setRefreshing(false)));
+        binding.swipe2refresh.setRefreshing(true);
+        binding.swipe2refresh.setOnRefreshListener(() -> refresh(() -> binding.swipe2refresh.setRefreshing(false)));
 
         return root;
     }
@@ -52,7 +51,7 @@ public class EventsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        refresh(()->{});
+        refresh(()->binding.swipe2refresh.setRefreshing(false));
     }
 
     public void refresh(Runnable onRefresh) {
