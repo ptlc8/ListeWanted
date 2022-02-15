@@ -9,7 +9,7 @@ android {
         applicationId "fr.liste_wanted"
         minSdk 24
         targetSdk 32
-        versionCode 4
+        versionCode 5
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
