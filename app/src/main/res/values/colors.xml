@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="main">#724d41</color>
+    <color name="accent">#d6a156</color>
     <color name="dark_color">#3c1407</color>
     <color name="analog1">#726641</color>
     <color name="analog2">#72414d</color>
