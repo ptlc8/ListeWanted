@@ -85,12 +85,6 @@ public class EventsFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private void showEvent(Event event) {
         startActivity(EventActivity.getShowEventIntent(getContext(), event));
     }

@@ -87,10 +87,4 @@ public class DefisFragment extends Fragment {
             onRefresh.run();
         });
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }
