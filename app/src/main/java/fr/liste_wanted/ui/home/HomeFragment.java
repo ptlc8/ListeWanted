@@ -71,12 +71,6 @@ public class HomeFragment extends Fragment {
         popupView.setOnClickListener(view -> popup.dismiss());
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
     private static View createPoleView(LayoutInflater inflater, ViewGroup root, Pole pole, int membersPerRow, Consumer<Member> onMemberClick) {
         View poleView = inflater.inflate(R.layout.view_pole, root, false);
         ((TextView)poleView.findViewById(R.id.text_name)).setText(pole.getName());
