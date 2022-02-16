@@ -24,6 +24,7 @@ public class Event {
         this.endTime = endTime;
         this.place = place;
         this.description = description;
+        this.imageUrl = imageUrl;
     }
 
     public Event(JSONObject json) throws JSONException {
