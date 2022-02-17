@@ -36,7 +36,7 @@
       {
         "name": "Alicia Beguin",
         "nickname": "Abadakor",
-        "desc": "",
+        "desc": "Elle a réponse à tout",
         "tag": "Trésorière"
       }
     ]
@@ -53,12 +53,12 @@
       {
         "name": "Dorian Fuvel",
         "nickname": "Cheer'If 345",
-        "desc": "Un sombre passé..."
+        "desc": "Un nombre reflétant un sombre passé..."
       },
       {
         "name": "Duncan Boukhssibi",
         "nickname": "PileOuFace",
-        "desc": "Qu'est-ce qu'il fait là ? Un pûr hasard !"
+        "desc": "Qu'est-ce qu'il fait là ? Un pur hasard !"
       },
       {
         "name": "Mattéo Riedinger",
@@ -99,7 +99,7 @@
       {
         "name": "Margot Rouillé",
         "nickname": "Câlin",
-        "desc": ""
+        "desc": "Et lui on dit merci pour notre année !"
       }
     ]
   },
@@ -161,7 +161,7 @@
       },
       {
         "name": "Justine Murgue",
-        "nickname": "La Murgence",
+        "nickname": "Murgence",
         "desc": ""
       },
       {
@@ -203,12 +203,28 @@
       {
         "name": "Hugo Ribeiro",
         "nickname": "Ghost Rider",
-        "desc": "On suppose qu'il préfère sa moto aux réunions, mais on n'a jamais pu lui demander"
+        "desc": "On suppose qu'il préfère sa moto aux réunions, mais on n'a jamais pu lui demander",
+        "tag": "Respôle'asso"
       },
       {
         "name": "Samy Lenormand-boucherit",
         "nickname": "Samy The Kid",
         "desc": ""
+      },
+      {
+        "name": "Julien Rogeau",
+        "nickname": "@Listeux",
+        "desc": "Listeux moi ? Sérieusement ?! Demande à mon groupe d'amis, tu vas voir les portes que tu vas te prendre XD"
+      },
+      {
+        "name": "Roxanne Le Briand",
+        "nickname": "Red light",
+        "desc": ""
+      },
+      {
+        "name": "Dodovan",
+        "nickname": "Le Vanted",
+        "desc": "9 places de pur plaisir ! (plus si affinités)"
       }
     ]
   }
