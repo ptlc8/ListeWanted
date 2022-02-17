@@ -100,6 +100,11 @@
         "name": "Margot Rouillé",
         "nickname": "Câlin",
         "desc": "Et lui on dit merci pour notre année !"
+      },
+      {
+        "name": "Dodovan",
+        "nickname": "Le Vanted",
+        "desc": "9 places de pur plaisir ! (plus si affinités)"
       }
     ]
   },
@@ -220,11 +225,6 @@
         "name": "Roxanne Le Briand",
         "nickname": "Red light",
         "desc": ""
-      },
-      {
-        "name": "Dodovan",
-        "nickname": "Le Vanted",
-        "desc": "9 places de pur plaisir ! (plus si affinités)"
       }
     ]
   }

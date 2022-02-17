@@ -40,7 +40,9 @@ public class Member {
     }
 
     public String getFirstname() {
-        return name.substring(0, name.indexOf(' '));
+        if (name.contains(" "))
+            return name.substring(0, name.indexOf(' '));
+        return name;
     }
 
     public String getNickname() {
