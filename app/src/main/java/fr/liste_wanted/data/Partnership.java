@@ -9,7 +9,7 @@ public class Partnership {
 
     private String name;
     private String description;
-    private String color;
+    private String color = "#ffffff";
     private String link = null;
     private String imageUrl = null;
 
@@ -27,7 +27,8 @@ public class Partnership {
     public Partnership(JSONObject json) throws JSONException  {
         this.name = json.getString("name");
         this.description = json.getString("description");
-        this.color = json.getString("color");
+        if (json.has("color"))
+            this.color = json.getString("color");
         if (json.has("link"))
             this.link = json.getString("link");
         if (json.has("imageUrl"))
