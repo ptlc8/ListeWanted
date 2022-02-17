@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.partnership.PartnershipActivity" >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -30,8 +31,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.ListeWanted.PopupOverlay" />
+                app:layout_collapseMode="pin" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -50,13 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/black" />
+                android:layout_marginStart="16dp" />
             <TextView
                 android:id="@+id/text_description"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
