@@ -31,10 +31,10 @@ import fr.liste_wanted.databinding.PopupMemberBinding;
 public class HomeFragment extends Fragment {
 
     private static final String
-            FACEBOOK = "https://www.facebook.com/n/?BDERunWild", // TODO : à modifier
-            INSTAGRAM = "https://www.instagram.com/ptlc8/", // TODO : à modifier
-            YOUTUBE = "https://www.youtube.com/channel/UCYMikqdthiDtJcJlsAOOE-Q", // TODO : à modifier
-            TELEGRAM = "https://t.me/joinchat/MNxDBfASdc5jNzE8", // TODO : à modifier
+            FACEBOOK = "https://www.facebook.com/n/?ListeBDEWanted",
+            INSTAGRAM = "https://www.instagram.com/listebdewanted/",
+            YOUTUBE = "https://www.youtube.com/channel/UCQth_1OoT6GGbZAxwDrBoZg",
+            TELEGRAM = "https://t.me/listebdewanted",
             WEBSITE = "https://liste-wanted.fr";
 
     private FragmentHomeBinding binding;
