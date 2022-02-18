@@ -44,15 +44,13 @@ public class DefisListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-        if (convertView!=null) return convertView;
-        View view = inflater.inflate(R.layout.view_defi, viewGroup, false);
+    public View getView(int i, View defiView, ViewGroup viewGroup) {
+        if (defiView==null)
+            defiView = inflater.inflate(R.layout.view_defi, viewGroup, false);
         Defi defi = defis.getDefis().get(i);
-        if (defi == null) return null;
-        ((TextView) view.findViewById(R.id.author)).setText(context.getString(R.string.defi_title, defi.getNumber(), defi.getAuthor()));
-        ((TextView) view.findViewById(R.id.task)).setText(defi.getTask());
-        view.findViewById(R.id.finished).setVisibility(defi.isFinished() ? View.VISIBLE : View.INVISIBLE);
-        // TODO : Ajouter les preuves de défi
-        return view;
+        ((TextView) defiView.findViewById(R.id.author)).setText(context.getString(R.string.defi_title, defi.getNumber(), defi.getAuthor()));
+        ((TextView) defiView.findViewById(R.id.task)).setText(defi.getTask());
+        defiView.findViewById(R.id.finished).setVisibility(defi.isFinished() ? View.VISIBLE : View.INVISIBLE);
+        return defiView;
     }
 }
