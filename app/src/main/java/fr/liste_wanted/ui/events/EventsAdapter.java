@@ -63,7 +63,7 @@ public class EventsAdapter extends BaseAdapter {
         ((TextView)eventView.findViewById(R.id.month_year)).setText(new SimpleDateFormat("LLLL yyyy",locale).format(startTime));
         ((TextView)eventView.findViewById(R.id.time)).setText(new SimpleDateFormat("H:mm",locale).format(startTime));
         ((TextView)eventView.findViewById(R.id.place)).setText(event.getPlace());
-        ((TextView)eventView.findViewById(R.id.description)).setText(event.getDescription());
+        ((TextView)eventView.findViewById(R.id.description)).setText(event.getShortDescription());
         return eventView;
     }
 }

@@ -62,6 +62,12 @@ public class Event {
         return description;
     }
 
+    public String getShortDescription() {
+        if (description.length()<=128)
+            return description;
+        return description.substring(0, 128).replaceFirst(" [^ ]*$", "...");
+    }
+
     public int getDrawableResourceId(Context context) {
         return context.getResources().getIdentifier("event_"+name.toLowerCase().replaceAll("[^a-z]","_"), "drawable", context.getPackageName());
     }
