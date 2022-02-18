@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +31,14 @@ public class DefisFragment extends Fragment {
         binding = FragmentDefisBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        binding.listDefis.setOnScrollListener(new AbsListView.OnScrollListener() {
+            public void onScrollStateChanged(AbsListView absListView, int i) {}
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                if (binding.listDefis.getChildAt(0) != null) {
+                    binding.swipe2refresh.setEnabled(binding.listDefis.getFirstVisiblePosition() == 0 && binding.listDefis.getChildAt(0).getTop() == 0);
+                }
+            }
+        });
         defisListAdapter = new DefisListAdapter(getContext());
         binding.listDefis.setAdapter(defisListAdapter);
 
