@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,14 @@ public class PartnershipsFragment extends Fragment {
         binding.swipe2refresh.setRefreshing(true);
         binding.swipe2refresh.setOnRefreshListener(() -> refresh(() -> binding.swipe2refresh.setRefreshing(false)));
 
+        binding.listPartnerships.setOnScrollListener(new AbsListView.OnScrollListener() {
+            public void onScrollStateChanged(AbsListView absListView, int i) {}
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                if (binding.listPartnerships.getChildAt(0) != null) {
+                    binding.swipe2refresh.setEnabled(binding.listPartnerships.getFirstVisiblePosition() == 0 && binding.listPartnerships.getChildAt(0).getTop() == 0);
+                }
+            }
+        });
         binding.listPartnerships.setAdapter(partnershipsAdapter = new PartnershipsAdapter(getContext(), partnerships));
         binding.listPartnerships.setOnItemClickListener((adapterView, view, i, l) ->
                 startActivity(PartnershipActivity.getShowEventIntent(requireContext(), partnerships.get(i)))
